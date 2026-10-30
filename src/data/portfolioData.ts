@@ -9,7 +9,7 @@ export const PERSONAL_INFO = {
   email: "anirudhleela0@gmail.com",
   phone: "+91 8977720014",
   location: "Chennai, Tamil Nadu, India - 601206",
-  github: "https://github.com",
+  github: "https://github.com/ANIRUDHREDDY26",
   linkedin: "https://linkedin.com",
   aboutText: "I am a Computer Science Engineering (CSE) undergraduate and aspiring AI & Full-Stack Developer interested in developing intelligent, scalable and user-friendly applications. My technical focus centers on Machine Learning, Generative AI, Cloud Computing, Cybersecurity, IoT and modern Web Development. I continuously strengthen my problem-solving, programming and system design skills through hands-on projects, certifications and real-world architectures.",
   typewriterRoles: [
