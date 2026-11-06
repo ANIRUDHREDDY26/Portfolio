@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { EDUCATION_DATA, PROBLEM_SOLVING_DATA } from '../data/portfolioData';
+import { CertificateModal } from './CertificateModal';
+import { CertificationItem } from '../types';
 import { 
   GraduationCap, 
   Calendar, 
@@ -8,10 +10,27 @@ import {
   CheckCircle2, 
   Sparkles, 
   Trophy,
+  FileCheck,
   ExternalLink
 } from 'lucide-react';
 
 export const Education: React.FC = () => {
+  const [selectedCert, setSelectedCert] = useState<CertificationItem | null>(null);
+
+  const handleOpenCert = (item: typeof EDUCATION_DATA[0]) => {
+    if (!item.certificateFileName) return;
+    setSelectedCert({
+      id: item.degree,
+      title: item.certificateTitle || item.degree,
+      issuer: item.institution,
+      issueDate: item.period,
+      badge: item.status,
+      category: "Academic",
+      description: item.details.join(' '),
+      certificateFileName: item.certificateFileName
+    });
+  };
+
   return (
     <section id="education" className="py-24 relative z-10 bg-slate-950/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +45,7 @@ export const Education: React.FC = () => {
             Education & <span className="bg-gradient-to-r from-purple-400 via-sky-400 to-cyan-300 bg-clip-text text-transparent">Problem Solving</span>
           </h2>
           <p className="text-sm text-slate-400 max-w-xl mx-auto">
-            Formal engineering degree coursework and intensive algorithmic problem solving.
+            Formal engineering degree coursework, academic board qualifications, and intensive algorithmic problem solving.
           </p>
           <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto rounded-full" />
         </div>
@@ -37,7 +56,7 @@ export const Education: React.FC = () => {
           <div className="lg:col-span-7 space-y-6">
             <h3 className="text-sm font-mono text-cyan-400 uppercase tracking-wider flex items-center gap-2">
               <GraduationCap className="w-4 h-4" />
-              Academic Degrees
+              Academic Degrees & Board Certifications
             </h3>
 
             <div className="space-y-6">
@@ -78,6 +97,21 @@ export const Education: React.FC = () => {
                       </div>
                     ))}
                   </div>
+
+                  {item.certificateFileName && (
+                    <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+                      <span className="text-[11px] font-mono text-slate-400">
+                        Official Board Document Available
+                      </span>
+                      <button
+                        onClick={() => handleOpenCert(item)}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-cyan-300 hover:text-white bg-slate-900 border border-cyan-500/20 hover:border-cyan-400/50 transition-all hover:bg-cyan-500/10"
+                      >
+                        <FileCheck className="w-3.5 h-3.5 text-cyan-400" />
+                        <span>View Certificate / Marksheet</span>
+                      </button>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -151,6 +185,12 @@ export const Education: React.FC = () => {
         </div>
 
       </div>
+
+      {/* Certificate Modal for Education Cards */}
+      <CertificateModal
+        cert={selectedCert}
+        onClose={() => setSelectedCert(null)}
+      />
     </section>
   );
 };

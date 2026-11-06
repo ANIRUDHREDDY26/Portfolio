@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { EXPERIENCES_DATA } from '../data/portfolioData';
+import { CertificateModal } from './CertificateModal';
+import { CertificationItem } from '../types';
 import { 
   Briefcase, 
   Calendar, 
   Building2, 
-  Sparkles, 
   CheckCircle2, 
   Cloud, 
-  ShieldCheck,
-  Award
+  ShieldCheck, 
+  Award,
+  FileCheck
 } from 'lucide-react';
 
 export const Experience: React.FC = () => {
+  const [selectedCert, setSelectedCert] = useState<CertificationItem | null>(null);
+
+  const handleOpenExpCert = (exp: typeof EXPERIENCES_DATA[0]) => {
+    if (!exp.certificateFileName) return;
+    setSelectedCert({
+      id: exp.id,
+      title: `${exp.title} - ${exp.company}`,
+      issuer: exp.company,
+      issueDate: exp.period,
+      badge: exp.type,
+      category: exp.title.includes('Cyber') ? 'Cybersecurity' : 'Cloud',
+      description: exp.description.join(' '),
+      certificateFileName: exp.certificateFileName
+    });
+  };
+
   return (
     <section id="experience" className="py-24 relative z-10 bg-slate-950/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,6 +131,22 @@ export const Experience: React.FC = () => {
                       ))}
                     </div>
 
+                    {/* Certificate Action */}
+                    {exp.certificateFileName && (
+                      <div className="pt-3 mt-3 border-t border-white/5 flex items-center justify-between">
+                        <span className="text-[11px] font-mono text-slate-400">
+                          Official Training Certificate
+                        </span>
+                        <button
+                          onClick={() => handleOpenExpCert(exp)}
+                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold text-cyan-300 hover:text-white bg-slate-900 border border-cyan-500/20 hover:border-cyan-400/50 transition-all hover:bg-cyan-500/10"
+                        >
+                          <FileCheck className="w-3.5 h-3.5 text-cyan-400" />
+                          <span>View Certificate</span>
+                        </button>
+                      </div>
+                    )}
+
                   </div>
                 </div>
 
@@ -125,6 +159,12 @@ export const Experience: React.FC = () => {
         </div>
 
       </div>
+
+      {/* Certificate Modal for Experience */}
+      <CertificateModal
+        cert={selectedCert}
+        onClose={() => setSelectedCert(null)}
+      />
     </section>
   );
 };

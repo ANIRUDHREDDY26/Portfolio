@@ -21,7 +21,7 @@ export const PERSONAL_INFO = {
   ],
   stats: [
     { label: "Problems Solved", value: "1300+", subtitle: "SkillRack" },
-    { label: "Certifications", value: "12+", subtitle: "Cloud & AI Verified" },
+    { label: "Certifications", value: "14+", subtitle: "Official Credentials" },
     { label: "Internships", value: "2", subtitle: "Cloud & Cyber Security" },
     { label: "Field of Study", value: "B.Tech CSE", subtitle: "R.M.D. Engg College" }
   ]
@@ -170,7 +170,8 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
       "Enhanced understanding of cybersecurity principles, security awareness, and approaches to protecting digital environments.",
       "Explored proactive threat identification, vulnerability recognition, and fundamentals of network and host protection."
     ],
-    skills: ["Cybersecurity Fundamentals", "Threat Analysis", "Security Awareness", "Digital Protection", "Network Security"]
+    skills: ["Cybersecurity Fundamentals", "Threat Analysis", "Security Awareness", "Digital Protection", "Network Security"],
+    certificateFileName: "corizo-cyber-security-internship.png"
   },
   {
     id: "corizo-cloud-computing",
@@ -184,7 +185,8 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
       "Developed foundational understanding of cloud-based solutions, computing environments, and virtualization principles.",
       "Studied cloud service models (IaaS, PaaS, SaaS) and architectural best practices for modern cloud applications."
     ],
-    skills: ["Cloud Computing", "Cloud Infrastructure", "Cloud-based Solutions", "Virtualization", "Computing Environments"]
+    skills: ["Cloud Computing", "Cloud Infrastructure", "Cloud-based Solutions", "Virtualization", "Computing Environments"],
+    certificateFileName: "corizo-cloud-computing-internship.png"
   }
 ];
 
@@ -280,6 +282,26 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
     certificateFileName: "infosys-web-development-concepts.pdf"
   },
   {
+    id: "intermediate-12th-board",
+    title: "Intermediate Pass Certificate cum Memorandum of Marks (12th)",
+    issuer: "Board of Intermediate Education, AP",
+    issueDate: "March 2024",
+    badge: "'A' Grade (872/1000)",
+    category: "Academic",
+    description: "Completed Senior Secondary Intermediate Education from Sanskriti Junior College, Tirupati with Mathematics, Physics, and Chemistry (MPC) in 'A' Grade.",
+    certificateFileName: "intermediate-12th-certificate.jpg"
+  },
+  {
+    id: "ssc-10th-board",
+    title: "Secondary School Certificate (SSC / 10th Standard)",
+    issuer: "Board of Secondary Education, AP",
+    issueDate: "April 2022",
+    badge: "First Division (481/600)",
+    category: "Academic",
+    description: "Completed Secondary School Examination from Gautam Talent (E.M.) High School, Balaji Colony, Tirupati in First Division with English medium of instruction.",
+    certificateFileName: "ssc-10th-certificate.jpg"
+  },
+  {
     id: "corizo-cyber-training",
     title: "Cyber Security Internship Training",
     issuer: "Corizo",
@@ -287,7 +309,7 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
     badge: "Training Completion",
     category: "Cybersecurity",
     description: "Completed comprehensive training modules in digital security defenses, network threat recognition, security postures, and incident response awareness.",
-    certificateFileName: "corizo-cyber-security-internship.pdf"
+    certificateFileName: "corizo-cyber-security-internship.png"
   },
   {
     id: "corizo-cloud-training",
@@ -297,7 +319,7 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
     badge: "Training Completion",
     category: "Cloud",
     description: "Completed intensive practical modules on cloud environments, virtual instances, storage services, and cloud application deployment models.",
-    certificateFileName: "corizo-cloud-computing-internship.pdf"
+    certificateFileName: "corizo-cloud-computing-internship.png"
   },
   {
     id: "codetantra-software-dev",
@@ -325,15 +347,32 @@ export const EDUCATION_DATA: EducationItem[] = [
     ]
   },
   {
-    degree: "Higher Secondary Certificate (HSC) — Senior Secondary",
-    institution: "Sanskriti jr college",
+    degree: "Intermediate / Higher Secondary Certificate (12th / HSC)",
+    institution: "Sanskriti Junior College",
     location: "Tirupati, Andhra Pradesh, India",
     period: "2022 – 2024",
-    status: "Completed (2024)",
+    status: "Completed (Grade 'A' - 872/1000)",
     details: [
       "Mathematics, Physics, and Chemistry (MPC) stream.",
+      "Passed with 'A' Grade (872 / 1000) under Board of Intermediate Education, Andhra Pradesh.",
       "Built a solid foundation in analytical thinking, calculus, physics, and computational reasoning."
-    ]
+    ],
+    certificateFileName: "intermediate-12th-certificate.jpg",
+    certificateTitle: "Intermediate Pass Certificate"
+  },
+  {
+    degree: "Secondary School Certificate (SSC / 10th Standard)",
+    institution: "Gautam Talent (E.M.) High School",
+    location: "Balaji Colony, Tirupati, Andhra Pradesh",
+    period: "2021 – 2022",
+    status: "Passed in First Division (481 Marks)",
+    details: [
+      "Board of Secondary Education, Andhra Pradesh.",
+      "Secured First Division with 481 marks with English as medium of instruction.",
+      "Strong foundation in Mathematics, General Science, and analytical problem solving."
+    ],
+    certificateFileName: "ssc-10th-certificate.jpg",
+    certificateTitle: "SSC 10th Certificate"
   }
 ];
 

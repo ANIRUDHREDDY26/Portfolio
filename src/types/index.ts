@@ -27,17 +27,18 @@ export interface ExperienceItem {
   description: string[];
   skills: string[];
   badgeColor?: string;
+  certificateFileName?: string;
 }
 
 export interface CertificationItem {
   id: string;
   title: string;
-  issuer: 'Oracle' | 'Google Cloud' | 'NPTEL' | 'Infosys Springboard' | 'Corizo' | 'CodeTantra';
+  issuer: string;
   issueDate: string;
   badge?: string;
   description: string;
   certificateFileName?: string;
-  category: 'Cloud' | 'AI/ML' | 'Programming' | 'Cybersecurity' | 'IoT' | 'Soft Skills';
+  category: string;
 }
 
 export interface EducationItem {
@@ -47,4 +48,6 @@ export interface EducationItem {
   period: string;
   status: string;
   details: string[];
+  certificateFileName?: string;
+  certificateTitle?: string;
 }

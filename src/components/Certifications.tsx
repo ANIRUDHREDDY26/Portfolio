@@ -17,13 +17,18 @@ export const Certifications: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<CertificationItem | null>(null);
   const [selectedIssuer, setSelectedIssuer] = useState<string>('All');
 
-  const issuers = ['All', 'Oracle', 'Google Cloud', 'NPTEL', 'Infosys Springboard', 'Corizo', 'CodeTantra'];
+  const issuers = ['All', 'Oracle', 'Google Cloud', 'NPTEL', 'Infosys Springboard', 'Corizo', 'CodeTantra', 'Academic Boards'];
 
   const filteredCerts = CERTIFICATIONS_DATA.filter((cert) => {
-    return selectedIssuer === 'All' || cert.issuer === selectedIssuer;
+    if (selectedIssuer === 'All') return true;
+    if (selectedIssuer === 'Academic Boards') return cert.category === 'Academic' || cert.issuer.includes('Board');
+    return cert.issuer === selectedIssuer;
   });
 
   const getIssuerBadgeColor = (issuer: string) => {
+    if (issuer.includes('Board')) {
+      return 'border-fuchsia-500/30 text-fuchsia-300 bg-fuchsia-950/30';
+    }
     switch (issuer) {
       case 'Oracle':
         return 'border-red-500/30 text-red-300 bg-red-950/30';
@@ -56,7 +61,7 @@ export const Certifications: React.FC = () => {
             Professional <span className="bg-gradient-to-r from-purple-400 via-sky-400 to-cyan-300 bg-clip-text text-transparent">Certifications</span>
           </h2>
           <p className="text-sm text-slate-400 max-w-xl mx-auto">
-            12+ verified credentials across Cloud Architecture, AI Foundations, IoT, Modern Web Development, and Cyber Security.
+            14+ verified credentials across Cloud Architecture, AI Foundations, Academic Boards (10th & Intermediate), IoT, and Cyber Security.
           </p>
           <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto rounded-full" />
         </div>
