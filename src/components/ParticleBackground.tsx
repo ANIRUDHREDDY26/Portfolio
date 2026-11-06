@@ -11,108 +11,156 @@ export const ParticleBackground: React.FC = () => {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    let particles: Particle[] = [];
+    const particleCount = 65;
+    const mouse = { x: null as number | null, y: null as number | null, radius: 150 };
 
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
+    function resizeCanvas() {
+      if (!canvas || !ctx) return;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
+    }
 
-    window.addEventListener('resize', handleResize);
-
-    // Particle settings
-    const particleCount = Math.min(Math.floor((width * height) / 18000), 75);
-    const particles: Array<{
+    class Particle {
       x: number;
       y: number;
       vx: number;
       vy: number;
       radius: number;
       color: string;
-      alpha: number;
-    }> = [];
 
-    const colors = [
-      'rgba(168, 85, 247, ', // purple
-      'rgba(56, 189, 248, ', // electric blue / sky
-      'rgba(6, 182, 212, ',  // cyan
-      'rgba(129, 140, 248, ' // indigo
-    ];
+      constructor() {
+        this.x = Math.random() * window.innerWidth;
+        this.y = Math.random() * window.innerHeight;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 2 + 1;
+        // Orange and white accents matching Hafruddin portfolio
+        const isOrange = Math.random() > 0.4;
+        this.color = isOrange
+          ? `rgba(255, 85, 0, ${Math.random() * 0.5 + 0.25})`
+          : `rgba(255, 255, 255, ${Math.random() * 0.4 + 0.15})`;
+      }
 
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 1.8 + 0.8,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: Math.random() * 0.5 + 0.2
-      });
-    }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
 
-    // Render loop
-    const render = () => {
-      ctx.clearRect(0, 0, width, height);
+        if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
+        if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
 
-      // Draw and update particles
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Wrap around edges
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `${p.color}${p.alpha})`;
-        ctx.fill();
-
-        // Connect nearby particles
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p.x - p2.x;
-          const dy = p.y - p2.y;
+        // Mouse interaction
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 130) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            const lineAlpha = (1 - dist / 130) * 0.15;
-            ctx.strokeStyle = `rgba(139, 92, 246, ${lineAlpha})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
+          if (dist < mouse.radius) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            this.x -= dx * force * 0.02;
+            this.y -= dy * force * 0.02;
           }
         }
       }
 
-      animationFrameId = requestAnimationFrame(render);
+      draw() {
+        if (!ctx) return;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      resizeCanvas();
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function drawLines() {
+      if (!ctx) return;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.12 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+      // Deep ambient background radial glow
+      const gradient = ctx.createRadialGradient(
+        window.innerWidth / 2,
+        window.innerHeight / 2,
+        10,
+        window.innerWidth / 2,
+        window.innerHeight / 2,
+        Math.max(window.innerWidth, window.innerHeight)
+      );
+      gradient.addColorStop(0, '#0c0a0a');
+      gradient.addColorStop(0.5, '#000000');
+      gradient.addColorStop(1, '#000000');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+      particles.forEach((p) => {
+        p.update();
+        p.draw();
+      });
+
+      drawLines();
+      animationFrameId = requestAnimationFrame(animate);
+    }
+
+    const handleResize = () => {
+      init();
     };
 
-    render();
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+
+    const handleMouseLeave = () => {
+      mouse.x = null;
+      mouse.y = null;
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseleave', handleMouseLeave);
+
+    init();
+    animate();
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Dynamic ambient glowing blobs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[55vw] h-[55vw] max-w-[700px] max-h-[700px] rounded-full bg-purple-700/10 blur-[130px] animate-pulse-slow" />
-      <div className="absolute top-[35%] right-[-10%] w-[50vw] h-[50vw] max-w-[650px] max-h-[650px] rounded-full bg-blue-600/10 blur-[140px] animate-pulse-slow delay-1000" />
-      <div className="absolute bottom-[-10%] left-[20%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] rounded-full bg-cyan-600/10 blur-[120px] animate-pulse-slow delay-700" />
-
-      {/* Interactive canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full opacity-65" />
+    <div className="canvas-container">
+      <canvas ref={canvasRef} className="block w-full h-full" />
     </div>
   );
 };

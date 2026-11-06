@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>PEDDI REDDY LEELA ANIRUDH REDDY | AI & Full-Stack Developer</title>
-  
-  <!-- Fonts -->
+  <meta name="description" content="Portfolio of Peddi Reddy Leela Anirudh Reddy — AI & Full-Stack Developer pursuing B.Tech in CSE. Building intelligent systems across AI/ML, Cloud Architectures (Azure, GCP, OCI), Cybersecurity, IoT, and Full-Stack Engineering." />
+
+  <!-- Fonts: Plus Jakarta Sans, Instrument Serif, Share Tech Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,16 +19,16 @@
       theme: {
         extend: {
           colors: {
-            navy: {
-              950: '#030712',
-              900: '#060d1f',
-              850: '#0a1329',
-              800: '#0f1b36',
+            orange: {
+              500: '#ff5500',
+              600: '#ff661a',
+              400: '#ff7733',
             }
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            mono: ['"Share Tech Mono"', 'monospace'],
           }
         }
       }
@@ -37,901 +38,783 @@
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
       scroll-behavior: smooth;
     }
+
     body {
-      background-color: #030712;
-      color: #f8fafc;
-      font-family: 'Inter', sans-serif;
+      width: 100%;
+      min-height: 100vh;
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       overflow-x: hidden;
     }
+
+    /* Fixed Canvas background animation */
+    .canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .btn-orange {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #ff5500;
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-orange:hover {
+      background-color: #ff661a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 85, 0, 0.35);
+    }
+
+    .btn-pill-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-pill-dark:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
     .glass-card {
-      background: rgba(10, 19, 41, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    }
-    .glass-card-hover {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .glass-card-hover:hover {
-      background: rgba(15, 27, 54, 0.85);
-      border-color: rgba(56, 189, 248, 0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px -10px rgba(168, 85, 247, 0.25);
-    }
-    .glass-nav {
-      background: rgba(3, 7, 18, 0.85);
+      background: rgba(12, 10, 10, 0.45);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     }
-    .text-gradient {
-      background: linear-gradient(135deg, #c084fc 0%, #38bdf8 50%, #22d3ee 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+
+    .glass-card:hover {
+      border-color: rgba(255, 85, 0, 0.4);
     }
-    ::-webkit-scrollbar {
-      width: 8px;
+
+    .eyebrow-orange {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #ff5500;
+      text-transform: uppercase;
     }
-    ::-webkit-scrollbar-track {
-      background: #060d1f;
+
+    .serif-italic {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
     }
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 4px;
+
+    .stat-number {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(48px, 5.5vw, 84px);
+      font-weight: 400;
+      color: #ffffff;
+      letter-spacing: -2px;
+      line-height: 1;
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-    .animate-float {
-      animation: float 5s ease-in-out infinite;
+
+    .profile-card-glow {
+      position: relative;
+      border-radius: 28px;
+      padding: 12px;
+      background: rgba(255, 85, 0, 0.08);
+      border: 1px solid rgba(255, 85, 0, 0.25);
+      box-shadow: 0 10px 45px rgba(255, 85, 0, 0.15);
     }
   </style>
 </head>
-<body class="bg-[#030712] text-slate-100 min-h-screen relative">
+<body class="selection:bg-orange-500/30 selection:text-orange-400">
 
-  <!-- Interactive Canvas Particles -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-purple-700/10 blur-[130px]"></div>
-    <div class="absolute top-[35%] right-[-10%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[140px]"></div>
-    <div class="absolute bottom-[-10%] left-[20%] w-[450px] h-[450px] rounded-full bg-cyan-600/10 blur-[120px]"></div>
-    <canvas id="particleCanvas" class="absolute inset-0 block w-full h-full opacity-60"></canvas>
+  <!-- Interactive Particle Background Canvas -->
+  <div class="canvas-container">
+    <canvas id="animation-canvas"></canvas>
   </div>
 
-  <!-- Sticky Navbar -->
-  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav py-3.5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between">
-        <!-- Logo -->
-        <a href="#home" class="flex items-center gap-2.5 group">
-          <div class="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-blue-600 to-cyan-400 p-[1.5px] shadow-lg shadow-purple-500/20">
-            <div class="w-full h-full bg-[#030712] rounded-[9px] overflow-hidden flex items-center justify-center">
-              <img src="https://beamish-wisp-41e109.netlify.app/anirudh.jpg" alt="Anirudh Reddy" class="w-full h-full object-cover object-top" onerror="this.style.display='none'">
-            </div>
-            <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-cyan-400 rounded-full animate-ping opacity-75"></span>
-            <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-cyan-400 rounded-full"></span>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-bold text-sm tracking-wide text-white group-hover:text-cyan-300 transition-colors">
-              ANIRUDH REDDY
-            </span>
-            <span class="text-[10px] font-mono tracking-wider text-cyan-300 flex items-center gap-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              B.Tech CSE
-            </span>
-          </div>
+  <!-- Header Navigation -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-black/85 backdrop-blur-md border-b border-white/10 py-4">
+    <div class="max-w-[1320px] mx-auto px-5 sm:px-8 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 text-decoration-none">
+        <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-white hover:text-orange-500 transition-colors">
+          ANIRUDH<span class="text-orange-500">.</span>REDDY
+        </span>
+        <span class="hidden sm:inline-block text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-white/5 border border-white/10 text-orange-400">
+          B.TECH CSE
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="#home" class="text-sm font-medium text-white/80 hover:text-orange-400 transition-colors">Home</a>
+        <a href="#about" class="text-sm font-medium text-white/80 hover:text-orange-400 transition-colors">About</a>
+        <a href="#skills-section" class="text-sm font-medium text-white/80 hover:text-orange-400 transition-colors">Skills</a>
+        <a href="#projects" class="text-sm font-medium text-white/80 hover:text-orange-400 transition-colors">Projects</a>
+        <a href="#experience" class="text-sm font-medium text-white/80 hover:text-orange-400 transition-colors">Experience</a>
+        <a href="#education-certs" class="text-sm font-medium text-white/80 hover:text-orange-400 transition-colors">Credentials</a>
+        <a href="#contact" class="text-sm font-medium text-white/80 hover:text-orange-400 transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://beamish-wisp-41e109.netlify.app" target="_blank" class="btn-orange text-xs sm:text-sm">
+          <span>Launch Live App</span>
+          <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[10px]">↗</span>
         </a>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-white/10 backdrop-blur-md">
-          <a href="#home" class="px-3 py-1 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors">Home</a>
-          <a href="#about" class="px-3 py-1 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors">About</a>
-          <a href="#skills" class="px-3 py-1 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors">Skills</a>
-          <a href="#ai-cloud" class="px-3 py-1 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors">AI & Cloud</a>
-          <a href="#projects" class="px-3 py-1 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors">Projects</a>
-          <a href="#experience" class="px-3 py-1 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors">Experience</a>
-          <a href="#certifications" class="px-3 py-1 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors">Certifications</a>
-          <a href="#education" class="px-3 py-1 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors">Education</a>
-          <a href="#contact" class="px-3 py-1 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors">Contact</a>
-        </nav>
-
-        <!-- Right CTA: Resume -->
-        <div class="flex items-center gap-2">
-          <button onclick="openResumeModal()" class="px-4 py-2 text-xs font-semibold text-white rounded-full bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 hover:shadow-lg hover:shadow-cyan-500/20 hover:scale-[1.02] transition-all flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span>Resume</span>
-          </button>
-          
-          <!-- Mobile Menu Toggle -->
-          <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg bg-slate-900 border border-white/10 text-slate-300 hover:text-white">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Dropdown -->
-      <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-2 border-t border-white/10 mt-3 grid grid-cols-2 gap-2 text-xs font-medium">
-        <a href="#home" onclick="toggleMobileMenu()" class="p-2 rounded bg-slate-900/60 text-slate-200">Home</a>
-        <a href="#about" onclick="toggleMobileMenu()" class="p-2 rounded bg-slate-900/60 text-slate-200">About</a>
-        <a href="#skills" onclick="toggleMobileMenu()" class="p-2 rounded bg-slate-900/60 text-slate-200">Skills</a>
-        <a href="#ai-cloud" onclick="toggleMobileMenu()" class="p-2 rounded bg-slate-900/60 text-slate-200">AI & Cloud</a>
-        <a href="#projects" onclick="toggleMobileMenu()" class="p-2 rounded bg-slate-900/60 text-slate-200">Projects</a>
-        <a href="#experience" onclick="toggleMobileMenu()" class="p-2 rounded bg-slate-900/60 text-slate-200">Experience</a>
-        <a href="#certifications" onclick="toggleMobileMenu()" class="p-2 rounded bg-slate-900/60 text-slate-200">Certifications</a>
-        <a href="#education" onclick="toggleMobileMenu()" class="p-2 rounded bg-slate-900/60 text-slate-200">Education</a>
-        <a href="#contact" onclick="toggleMobileMenu()" class="p-2 rounded bg-slate-900/60 text-slate-200">Contact</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="relative min-h-screen pt-32 pb-20 flex items-center justify-center z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+  <!-- Main Content Wrap -->
+  <main class="relative z-10">
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen pt-36 sm:pt-44 pb-16">
+      <div class="max-w-[1320px] mx-auto px-5 sm:px-8">
         
-        <!-- Left: Intro & Bio -->
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-300 text-xs font-medium backdrop-blur-md">
-            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-            <span>Pursuing B.Tech in Computer Science & Engineering (CSE)</span>
-          </div>
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+          
+          <!-- Left Info -->
+          <div class="w-full lg:max-w-[62%] space-y-6 text-left">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-white/5 border border-white/10 text-orange-400 uppercase">
+                AI & MACHINE LEARNING
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-white/5 border border-white/10 text-white/80 uppercase">
+                CLOUD ARCHITECTURE
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-white/5 border border-white/10 text-white/80 uppercase">
+                CYBERSECURITY
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-white/5 border border-white/10 text-white/80 uppercase">
+                FULL STACK
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-white/5 border border-white/10 text-orange-400 uppercase">
+                IOT
+              </span>
+            </div>
 
-          <div class="space-y-2">
-            <p class="text-slate-400 font-mono text-xs sm:text-sm tracking-wider uppercase">
-              Hello, I'm
-            </p>
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-              <span class="block">PEDDI REDDY LEELA</span>
-              <span class="block text-gradient mt-1">ANIRUDH REDDY</span>
+            <h1 class="text-4xl sm:text-6xl lg:text-[76px] font-black leading-[1.02] tracking-tight text-white uppercase">
+              HEY, I'M <br />
+              <span class="text-orange-500">PEDDI REDDY LEELA ANIRUDH REDDY</span>
             </h1>
-          </div>
 
-          <div class="space-y-1">
-            <h2 class="text-base sm:text-xl font-bold text-slate-200 flex flex-wrap items-center justify-center lg:justify-start gap-2">
-              <span>Computer Science Engineering</span>
-              <span class="text-cyan-400">•</span>
-              <span class="text-purple-300">AI & Full-Stack Developer</span>
-            </h2>
-            <div class="h-8 flex items-center justify-center lg:justify-start gap-2">
-              <span class="text-slate-400 text-xs sm:text-sm font-mono">Specializing in</span>
-              <span id="typewriterText" class="text-cyan-400 font-mono font-semibold text-xs sm:text-base border-r-2 border-cyan-400 pr-1"></span>
+            <div className="space-y-4 max-w-2xl">
+              <p class="text-base sm:text-lg text-white font-medium leading-snug">
+                Building intelligent, scalable, and secure systems combining <span class="serif-italic text-2xl text-orange-400">Generative AI</span>, multi-cloud architectures, and modern full-stack technologies.
+              </p>
+              <p class="text-sm sm:text-base text-white/70 leading-relaxed mt-2">
+                Computer Science & Engineering undergraduate at <strong class="text-white">R.M.D. Engineering College</strong> (Chennai, 2024–2028). Continuously mastering problem-solving on SkillRack (<strong class="text-orange-400">1300+ Solved</strong>), building hands-on cloud security and IoT telemetry prototypes, and architecting enterprise web applications.
+              </p>
+            </div>
+
+            <div class="pt-2 flex flex-wrap items-center gap-4">
+              <a href="#projects" class="btn-orange">
+                <span>View My Work</span>
+                <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[11px]">↗</span>
+              </a>
+              <a href="https://beamish-wisp-41e109.netlify.app" target="_blank" class="btn-pill-dark">
+                <span>Interactive Live Demos</span>
+              </a>
+              <a href="#contact" class="btn-pill-dark">
+                <span>Let's Connect</span>
+              </a>
             </div>
           </div>
 
-          <p class="text-slate-300 text-xs sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-            Computer Science Engineering undergraduate passionate about building intelligent applications by combining Artificial Intelligence, Generative AI, Cloud Computing, Cybersecurity and modern full-stack technologies.
-          </p>
-
-          <!-- Buttons -->
-          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
-            <a href="#projects" class="px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 shadow-lg shadow-purple-900/30 hover:shadow-cyan-500/25 hover:scale-[1.02] transition-all">
-              Explore My Projects →
-            </a>
-            <button onclick="openResumeModal()" class="px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-slate-900 border border-slate-700 hover:border-cyan-400/50 hover:text-white transition-all">
-              Download Resume
-            </button>
-            <a href="#contact" class="px-5 py-3 rounded-full text-xs sm:text-sm font-medium text-slate-300 hover:text-white bg-slate-900/40 border border-white/10 hover:border-purple-500/30 transition-all">
-              Contact Me
-            </a>
-          </div>
-
-          <!-- Stats Grid -->
-          <div class="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto lg:mx-0">
-            <div class="glass-card rounded-xl p-3 text-center border border-white/5">
-              <p class="text-lg sm:text-xl font-mono font-bold text-gradient">1300+</p>
-              <p class="text-[11px] font-medium text-slate-200 mt-0.5">Problems Solved</p>
-              <p class="text-[9px] text-slate-400 font-mono">SkillRack</p>
-            </div>
-            <div class="glass-card rounded-xl p-3 text-center border border-white/5">
-              <p class="text-lg sm:text-xl font-mono font-bold text-gradient">12+</p>
-              <p class="text-[11px] font-medium text-slate-200 mt-0.5">Certifications</p>
-              <p class="text-[9px] text-slate-400 font-mono">Cloud & AI</p>
-            </div>
-            <div class="glass-card rounded-xl p-3 text-center border border-white/5">
-              <p class="text-lg sm:text-xl font-mono font-bold text-gradient">2</p>
-              <p class="text-[11px] font-medium text-slate-200 mt-0.5">Internships</p>
-              <p class="text-[9px] text-slate-400 font-mono">Corizo Training</p>
-            </div>
-            <div class="glass-card rounded-xl p-3 text-center border border-white/5">
-              <p class="text-lg sm:text-xl font-mono font-bold text-gradient">B.Tech CSE</p>
-              <p class="text-[11px] font-medium text-slate-200 mt-0.5">Field of Study</p>
-              <p class="text-[9px] text-slate-400 font-mono">R.M.D. Engg</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Photo Visual Card -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
-            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-600 via-blue-600 to-cyan-400 blur-2xl opacity-30 animate-pulse"></div>
-            
-            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 p-[2px] shadow-2xl">
-              <div class="w-full h-full bg-[#0a1329]/90 rounded-[22px] backdrop-blur-xl p-6 flex flex-col items-center justify-between border border-white/10">
-                <div class="w-full flex items-center justify-between text-xs font-mono text-slate-400 pb-2 border-b border-white/5">
-                  <span class="flex items-center gap-1.5 text-cyan-400">
-                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-                    SYSTEM_ACTIVE
-                  </span>
-                  <span class="text-[10px] text-slate-500">ID: AR-2026</span>
-                </div>
-
-                <!-- Anirudh's Real Photo -->
-                <div class="relative my-auto group">
-                  <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl bg-gradient-to-tr from-purple-900/60 via-slate-800 to-cyan-900/60 p-1 border-2 border-cyan-400/50 shadow-2xl flex items-center justify-center overflow-hidden">
-                    <img 
-                      src="https://beamish-wisp-41e109.netlify.app/anirudh.jpg" 
-                      alt="PEDDI REDDY LEELA ANIRUDH REDDY" 
-                      class="w-full h-full object-cover object-center rounded-xl"
-                      onerror="this.src='https://beamish-wisp-41e109.netlify.app/profile.jpg'"
-                    >
-                    <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-                  </div>
-                  <div class="absolute -bottom-2 -right-2 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 rounded-full p-2 shadow-xl border border-white/20">
-                    <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                  </div>
-                </div>
-
-                <div class="w-full text-center pt-3 border-t border-white/5">
-                  <p class="font-mono text-xs font-bold text-white tracking-wide">
+          <!-- Right Portrait Glow Card -->
+          <div class="w-full lg:max-w-[340px] flex justify-center lg:justify-end">
+            <div class="profile-card-glow max-w-[320px] w-full">
+              <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-black/60 aspect-[4/5]">
+                <img
+                  src="https://beamish-wisp-41e109.netlify.app/anirudh.jpg"
+                  alt="PEDDI REDDY LEELA ANIRUDH REDDY"
+                  class="w-full h-full object-cover object-top"
+                  onerror="this.src='https://beamish-wisp-41e109.netlify.app/profile.jpg'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-3 inset-x-3 p-3 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 text-center">
+                  <p class="text-xs font-bold font-mono text-white tracking-wide">
                     PEDDI REDDY LEELA ANIRUDH REDDY
                   </p>
-                  <p class="text-[11px] text-cyan-300 font-medium flex items-center justify-center gap-1.5 mt-0.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <p class="text-[11px] font-mono text-orange-400 mt-0.5">
                     B.Tech CSE • R.M.D. Engg College
                   </p>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- About Me -->
-  <section id="about" class="py-24 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-          About <span class="text-gradient">Me</span>
-        </h2>
-        <div class="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto rounded-full"></div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
-        <div class="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8 border border-white/10 space-y-4">
-          <h3 class="text-xl font-bold text-white flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
-            Crafting Next-Gen Intelligent Applications
-          </h3>
-          <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
-            I am a Computer Science Engineering (CSE) undergraduate and aspiring AI & Full-Stack Developer interested in developing intelligent, scalable and user-friendly applications. My technical focus centers on Machine Learning, Generative AI, Cloud Computing, Cybersecurity, IoT and modern Web Development.
-          </p>
-          <p class="text-slate-400 leading-relaxed text-sm">
-            I continuously strengthen my problem-solving, programming and system design skills through hands-on projects, professional training and continuous learning.
-          </p>
-          <div class="pt-4 border-t border-white/5 flex flex-wrap gap-4 text-xs font-mono text-slate-400">
-            <span>📍 Chennai, Tamil Nadu</span>
-            <span>🎓 B.Tech CSE (2024–2028)</span>
-            <span>⚡ SkillRack: 1300+ Solved</span>
+        <!-- Services Grid -->
+        <div class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 sm:p-8 rounded-3xl bg-[#0c0a0a]/60 backdrop-blur-xl border border-white/10">
+          <div class="space-y-1">
+            <span class="text-xs font-mono font-bold text-orange-500">#01</span>
+            <h4 class="text-sm sm:text-base font-semibold text-white/95">AI & Machine Learning</h4>
+            <p class="text-xs text-white/60">Neural Models, Prompting, Threat Detection</p>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-mono font-bold text-orange-500">#02</span>
+            <h4 class="text-sm sm:text-base font-semibold text-white/95">Cloud Technologies</h4>
+            <p class="text-xs text-white/60">Azure, Google Cloud, Oracle Cloud (OCI)</p>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-mono font-bold text-orange-500">#03</span>
+            <h4 class="text-sm sm:text-base font-semibold text-white/95">Cybersecurity & Telemetry</h4>
+            <p class="text-xs text-white/60">SOC Telemetry, Anomaly ML, Defense</p>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-mono font-bold text-orange-500">#04</span>
+            <h4 class="text-sm sm:text-base font-semibold text-white/95">Full-Stack & IoT Systems</h4>
+            <p class="text-xs text-white/60">React.js, Spring Boot, Hardware Telemetry</p>
           </div>
         </div>
 
-        <div class="lg:col-span-5 glass-card rounded-2xl p-6 border border-white/10 space-y-3 bg-gradient-to-br from-slate-900/90 to-purple-950/20">
-          <p class="text-xs font-mono text-cyan-400 uppercase tracking-wider font-semibold">Engineering Focus</p>
-          <div class="space-y-2">
-            <div class="p-2.5 rounded-xl bg-slate-900 border border-purple-500/20 flex items-center justify-between text-xs">
-              <span class="font-semibold text-white">AI & Deep Learning Foundations</span>
-              <span class="font-mono text-purple-300">Core</span>
-            </div>
-            <div class="p-2.5 rounded-xl bg-slate-900 border border-cyan-500/20 flex items-center justify-between text-xs">
-              <span class="font-semibold text-white">Cloud Architecture (OCI, Azure, GCP)</span>
-              <span class="font-mono text-cyan-300">Certified</span>
-            </div>
-            <div class="p-2.5 rounded-xl bg-slate-900 border border-emerald-500/20 flex items-center justify-between text-xs">
-              <span class="font-semibold text-white">Cybersecurity & Telemetry</span>
-              <span class="font-mono text-emerald-300">Trained</span>
-            </div>
-          </div>
-        </div>
       </div>
+    </section>
 
-      <!-- 4 Pillars -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold font-mono">AI</div>
-          <h4 class="text-base font-bold text-white">AI & Machine Learning</h4>
-          <p class="text-xs text-slate-300 leading-relaxed">Developing intelligent systems leveraging ML algorithms, LLM concepts, RAG architectures and vector embeddings.</p>
-        </div>
-        <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-sky-400 flex items-center justify-center font-bold font-mono">CL</div>
-          <h4 class="text-base font-bold text-white">Cloud Technologies</h4>
-          <p class="text-xs text-slate-300 leading-relaxed">Architecting cloud solutions across Microsoft Azure, Google Cloud and Oracle Cloud (OCI).</p>
-        </div>
-        <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold font-mono">SEC</div>
-          <h4 class="text-base font-bold text-white">Cybersecurity</h4>
-          <p class="text-xs text-slate-300 leading-relaxed">Implementing cybersecurity fundamentals, anomaly detection, threat analysis and defense-in-depth protection.</p>
-        </div>
-        <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center font-bold font-mono">DEV</div>
-          <h4 class="text-base font-bold text-white">Full-Stack Development</h4>
-          <p class="text-xs text-slate-300 leading-relaxed">Engineering responsive interfaces with React.js and reliable REST APIs using Java, Spring Boot and modern databases.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Technical Skills -->
-  <section id="skills" class="py-24 relative z-10 bg-slate-950/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-          Main Technical <span class="text-gradient">Skills</span>
-        </h2>
-        <p class="text-sm text-slate-400 max-w-xl mx-auto">
-          Focused core competencies across Computer Science Engineering, AI/ML, Cloud Architectures, and Full-Stack Development.
+    <!-- Core Domains Strip -->
+    <section class="w-full py-8 bg-[#0a0a0a]/60 backdrop-blur-md border-y border-white/10">
+      <div class="max-w-[1320px] mx-auto px-5 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <p class="text-xs font-mono font-bold uppercase tracking-wider text-white/60 shrink-0">
+          Core Domains & Technologies
         </p>
-        <div class="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto rounded-full"></div>
-      </div>
-
-      <!-- Skills Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-sky-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">Python</p>
-          <span class="text-[10px] font-mono text-sky-300 mt-2">Programming</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-sky-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">Java</p>
-          <span class="text-[10px] font-mono text-sky-300 mt-2">Programming</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-sky-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">JavaScript</p>
-          <span class="text-[10px] font-mono text-sky-300 mt-2">Programming</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">Generative AI & LLMs</p>
-          <span class="text-[10px] font-mono text-purple-300 mt-2">AI / GenAI</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">Machine Learning</p>
-          <span class="text-[10px] font-mono text-purple-300 mt-2">AI / ML</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">RAG & Vector Embeddings</p>
-          <span class="text-[10px] font-mono text-purple-300 mt-2">AI Architecture</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-cyan-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">Microsoft Azure</p>
-          <span class="text-[10px] font-mono text-cyan-300 mt-2">Cloud Computing</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-cyan-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">Google Cloud (GCP)</p>
-          <span class="text-[10px] font-mono text-cyan-300 mt-2">Cloud Computing</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-cyan-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">Oracle Cloud (OCI)</p>
-          <span class="text-[10px] font-mono text-cyan-300 mt-2">Cloud Computing</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-pink-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">React.js</p>
-          <span class="text-[10px] font-mono text-pink-300 mt-2">Frontend</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-pink-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">Spring Boot</p>
-          <span class="text-[10px] font-mono text-pink-300 mt-2">Backend REST API</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-amber-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">MySQL</p>
-          <span class="text-[10px] font-mono text-amber-300 mt-2">Relational DB</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-amber-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">MongoDB Atlas (Vector Search)</p>
-          <span class="text-[10px] font-mono text-amber-300 mt-2">Document & Vector DB</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">Cybersecurity Fundamentals</p>
-          <span class="text-[10px] font-mono text-emerald-300 mt-2">Security</span>
-        </div>
-        <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
-          <p class="text-xs font-bold text-white">Internet of Things (IoT)</p>
-          <span class="text-[10px] font-mono text-emerald-300 mt-2">Embedded Systems</span>
+        <div class="flex items-center gap-6 sm:gap-8 flex-wrap justify-center font-mono text-xs sm:text-sm text-white/80">
+          <span>Python</span>
+          <span>React.js</span>
+          <span>Java</span>
+          <span>Spring Boot</span>
+          <span>Microsoft Azure</span>
+          <span>Google Cloud</span>
+          <span>Oracle Cloud (OCI)</span>
+          <span>Cybersecurity</span>
+          <span>IoT</span>
+          <span>MySQL</span>
+          <span>MongoDB Atlas</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Featured Projects -->
-  <section id="projects" class="py-24 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-          Featured <span class="text-gradient">Projects</span>
-        </h2>
-        <p class="text-sm text-slate-400 max-w-xl mx-auto">
-          Practical systems across AI, Cloud Security, IoT and Full-Stack Engineering.
-        </p>
-        <div class="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto rounded-full"></div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Project 1 -->
-        <div class="glass-card rounded-2xl border border-white/10 overflow-hidden flex flex-col justify-between hover:border-cyan-500/40 transition-all">
-          <div class="p-6 space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-mono text-cyan-400">AI & CYBERSECURITY</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">In Progress</span>
+    <!-- Behind the Code (About) -->
+    <section id="about" class="py-24">
+      <div class="max-w-[1320px] mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-7 space-y-6">
+            <p class="eyebrow-orange">Behind the Code</p>
+            <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+              Engineering Next-Gen <span class="serif-italic text-4xl sm:text-6xl text-orange-400">Intelligent</span> & Scalable Cloud Systems.
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base text-white/70 leading-relaxed">
+              <p>
+                I am a Computer Science & Engineering undergraduate and aspiring AI & Full-Stack Developer at <strong class="text-white">R.M.D. Engineering College</strong> (Chennai, Tamil Nadu), pursuing my degree from 2024 to 2028.
+              </p>
+              <p>
+                My engineering journey is driven by practical problem-solving and systems thinking. I continuously hone my algorithmic capabilities on SkillRack with over <strong class="text-orange-400">1300+ problems solved</strong>, while actively architecting projects spanning AI-powered security telemetry, IoT edge sensor streams, and enterprise microservices.
+              </p>
+              <p>
+                Certified across <strong class="text-white">Oracle Cloud Infrastructure (OCI 2025 AI Foundations)</strong>, <strong class="text-white">Google Cloud</strong>, and trained through hands-on industrial internships in Cyber Security and Cloud Infrastructure with <strong class="text-white">Corizo</strong>.
+              </p>
             </div>
-            <h3 class="text-lg font-bold text-white leading-snug">AI-Powered Cloud Security & Threat Detection System</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Designed an AI-based security monitoring system to identify suspicious activities, analyze security events, and detect potential cyber threats using machine learning and cloud-based monitoring.
+          </div>
+
+          <div class="lg:col-span-5 space-y-4">
+            <div class="glass-card p-6 rounded-2xl border border-white/10 space-y-2">
+              <span class="text-xs font-mono font-bold text-orange-500">PILLAR 01</span>
+              <h3 class="text-base font-bold text-white">AI & Machine Learning</h3>
+              <p class="text-xs text-white/70">Designing anomaly detection classifiers, predictive models, and prompt architectures.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl border border-white/10 space-y-2">
+              <span class="text-xs font-mono font-bold text-orange-500">PILLAR 02</span>
+              <h3 class="text-base font-bold text-white">Multi-Cloud Architecture</h3>
+              <p class="text-xs text-white/70">Architecting resilient cloud hosting across Microsoft Azure, Google Cloud, and Oracle Cloud.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl border border-white/10 space-y-2">
+              <span class="text-xs font-mono font-bold text-orange-500">PILLAR 03</span>
+              <h3 class="text-base font-bold text-white">Cybersecurity & Telemetry</h3>
+              <p class="text-xs text-white/70">Real-time threat feeds, event streaming analysis, and enterprise Zero-Trust defense.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl border border-white/10 space-y-2">
+              <span class="text-xs font-mono font-bold text-orange-500">PILLAR 04</span>
+              <h3 class="text-base font-bold text-white">Full-Stack & IoT Systems</h3>
+              <p class="text-xs text-white/70">Developing reactive user interfaces with React.js, high-throughput Spring Boot REST APIs, and embedded sensor streams.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats & Skills Section -->
+    <section id="skills-section" class="py-20">
+      <div class="max-w-[1320px] mx-auto px-5 sm:px-8 space-y-16">
+        
+        <!-- Stats Card -->
+        <div class="glass-card rounded-3xl p-8 sm:p-14 border border-white/10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-12">
+            <div class="lg:col-span-5 space-y-6">
+              <div class="inline-flex items-center gap-3 text-xs font-mono text-white/70 border-l-2 border-orange-500 pl-3">
+                <span>CHENNAI, INDIA • B.TECH CSE (2024–2028)</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <a href="https://github.com/ANIRUDHREDDY26" target="_blank" class="w-11 h-11 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-xs">GH</a>
+                <a href="https://www.linkedin.com/in/peddireddy-leela-anirudh-reddy-11a511342" target="_blank" class="w-11 h-11 rounded-full bg-white/10 text-white flex items-center justify-center font-bold text-xs">IN</a>
+                <a href="mailto:anirudhreddy2601@gmail.com" class="w-11 h-11 rounded-full bg-white/10 text-white flex items-center justify-center font-bold text-xs">@</a>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7">
+              <p class="text-xl sm:text-3xl font-medium text-white/60 leading-snug">
+                Specializing in bridging <span class="text-white font-bold">AI Intelligence</span> with <span class="text-white font-bold">Enterprise Cloud Architectures</span>, robust cybersecurity defenses, and responsive full-stack applications.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-white/10">
+            <div class="space-y-2">
+              <div class="stat-number">1300+</div>
+              <p class="text-xs font-medium text-white/80">SkillRack Solved</p>
+              <div class="w-full h-0.5 bg-gradient-to-r from-orange-500 to-transparent"></div>
+            </div>
+            <div class="space-y-2">
+              <div class="stat-number">14+</div>
+              <p class="text-xs font-medium text-white/80">Verified Credentials</p>
+              <div class="w-full h-0.5 bg-gradient-to-r from-orange-500 to-transparent"></div>
+            </div>
+            <div class="space-y-2">
+              <div class="stat-number">03</div>
+              <p class="text-xs font-medium text-white/80">Featured Architectures</p>
+              <div class="w-full h-0.5 bg-gradient-to-r from-orange-500 to-transparent"></div>
+            </div>
+            <div class="space-y-2">
+              <div class="stat-number">2028</div>
+              <p class="text-xs font-medium text-white/80">B.Tech CSE Cohort</p>
+              <div class="w-full h-0.5 bg-gradient-to-r from-orange-500 to-transparent"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="projects" class="py-24">
+      <div class="max-w-[1320px] mx-auto px-5 sm:px-8 space-y-12">
+        <div>
+          <p class="eyebrow-orange">My Portfolio</p>
+          <h2 class="text-3xl sm:text-5xl font-black text-white mt-1">
+            Featured <span class="text-orange-500">Architectures</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- Project 1 -->
+          <div class="glass-card rounded-3xl p-6 border border-white/10 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-mono text-orange-400">AI & CYBERSECURITY</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/60">Live Demo</span>
+              </div>
+              <h3 class="text-xl font-bold text-white">AI-Powered Cloud Security & Threat Detection System</h3>
+              <p class="text-xs text-white/70 leading-relaxed">
+                Designed an AI-based security monitoring system that continuously evaluates cloud event streams, detects anomalous patterns using ML, and dispatches automated containment alerts.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-2 font-mono text-[10px]">
+                <span class="px-2 py-0.5 rounded bg-white/5 text-white/70">Python</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-white/70">Machine Learning</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-white/70">Cloud Security</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/#projects" target="_blank" class="btn-orange w-full justify-center text-xs">
+                <span>Launch Live Demo & Auth Gateway</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="glass-card rounded-3xl p-6 border border-white/10 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-mono text-orange-400">IOT & CLOUD</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/60">Live Demo</span>
+              </div>
+              <h3 class="text-xl font-bold text-white">Smart IoT-Based Environmental Monitoring System</h3>
+              <p class="text-xs text-white/70 leading-relaxed">
+                Developed an end-to-end IoT monitoring solution that captures sensory readings, transmits telemetry to Google Cloud, and provides actionable visual analytics.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-2 font-mono text-[10px]">
+                <span class="px-2 py-0.5 rounded bg-white/5 text-white/70">IoT</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-white/70">Google Cloud</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-white/70">Telemetry</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/#projects" target="_blank" class="btn-orange w-full justify-center text-xs">
+                <span>Launch Live Demo & Auth Gateway</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="glass-card rounded-3xl p-6 border border-white/10 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-mono text-orange-400">FULL-STACK & CLOUD</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/60">Live Demo</span>
+              </div>
+              <h3 class="text-xl font-bold text-white">Cloud-Based Full-Stack Application</h3>
+              <p class="text-xs text-white/70 leading-relaxed">
+                Engineered a scalable full-stack web application with React.js frontend, Spring Boot REST API layer, and secure Microsoft Azure deployment architecture.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-2 font-mono text-[10px]">
+                <span class="px-2 py-0.5 rounded bg-white/5 text-white/70">React.js</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-white/70">Spring Boot</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-white/70">Azure</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/#projects" target="_blank" class="btn-orange w-full justify-center text-xs">
+                <span>Launch Live Demo & Auth Gateway</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24">
+      <div class="max-w-[1320px] mx-auto px-5 sm:px-8 space-y-12">
+        <div>
+          <p class="eyebrow-orange">Professional Journey</p>
+          <h2 class="text-3xl sm:text-5xl font-black text-white mt-1">
+            Internship <span class="text-orange-500">Experience</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="glass-card rounded-3xl p-8 border border-white/10 space-y-4">
+            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-orange-500/10 text-orange-400 border border-orange-500/30">
+              Internship Training
+            </span>
+            <h3 class="text-xl font-bold text-white">Cloud Computing Intern | Corizo</h3>
+            <p class="text-xs font-mono text-white/50">June 2026 – July 2026</p>
+            <p class="text-xs text-white/70 leading-relaxed">
+              Domain training in cloud architecture, virtualization, service models (IaaS, PaaS, SaaS), cloud storage, deployment workflows, and infrastructure reliability.
             </p>
-            <div class="space-y-1 text-xs text-slate-400">
-              <p>• Suspicious activity monitoring</p>
-              <p>• Threat analysis & event visualization</p>
-              <p>• Automated alert interface</p>
+            <div class="pt-4 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/certificates/corizo-cloud-computing-internship.png" target="_blank" class="btn-pill-dark text-xs py-1.5 px-3">
+                <span>View Official Certificate</span>
+                <span>↗</span>
+              </a>
             </div>
-            <div class="pt-2 flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">Python</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">Machine Learning</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">Cybersecurity</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">Cloud Computing</span>
-            </div>
-            <a href="https://beamish-wisp-41e109.netlify.app/#projects" target="_blank" class="mt-3 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-purple-600 via-sky-600 to-cyan-500 text-white hover:opacity-90 transition-opacity w-full">
-              <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span>Launch Live Demo & Login Gateway</span>
-            </a>
           </div>
-        </div>
 
-        <!-- Project 2 -->
-        <div class="glass-card rounded-2xl border border-white/10 overflow-hidden flex flex-col justify-between hover:border-cyan-500/40 transition-all">
-          <div class="p-6 space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-mono text-cyan-400">IOT & CLOUD</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">In Progress</span>
-            </div>
-            <h3 class="text-lg font-bold text-white leading-snug">Smart IoT-Based Environmental Monitoring System</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Designed an IoT monitoring solution to collect real-time environmental data using connected sensors, with a cloud architecture for data storage, visualization, and intelligent analytics.
+          <div class="glass-card rounded-3xl p-8 border border-white/10 space-y-4">
+            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-orange-500/10 text-orange-400 border border-orange-500/30">
+              Internship Training
+            </span>
+            <h3 class="text-xl font-bold text-white">Cyber Security Intern | Corizo</h3>
+            <p class="text-xs font-mono text-white/50">June 2026 – July 2026</p>
+            <p class="text-xs text-white/70 leading-relaxed">
+              Industrial internship training covering network security, threat vectors, reconnaissance, vulnerability assessment, defense methodologies, and SOC incident analysis.
             </p>
-            <div class="space-y-1 text-xs text-slate-400">
-              <p>• Real-time environmental readings</p>
-              <p>• Google Cloud data ingestion</p>
-              <p>• Interactive monitoring dashboard</p>
+            <div class="pt-4 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/certificates/corizo-cyber-security-internship.png" target="_blank" class="btn-pill-dark text-xs py-1.5 px-3">
+                <span>View Official Certificate</span>
+                <span>↗</span>
+              </a>
             </div>
-            <div class="pt-2 flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">IoT</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">Google Cloud</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">Python</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">Data Analytics</span>
-            </div>
-            <a href="https://beamish-wisp-41e109.netlify.app/#projects" target="_blank" class="mt-3 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-purple-600 via-sky-600 to-cyan-500 text-white hover:opacity-90 transition-opacity w-full">
-              <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span>Launch Live Demo & Login Gateway</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="glass-card rounded-2xl border border-white/10 overflow-hidden flex flex-col justify-between hover:border-cyan-500/40 transition-all">
-          <div class="p-6 space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-mono text-cyan-400">FULL-STACK & CLOUD</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">In Progress</span>
-            </div>
-            <h3 class="text-lg font-bold text-white leading-snug">Cloud-Based Full-Stack Application</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Developed a full-stack web application using Java, JavaScript, React.js and modern technologies, configured with scalable hosting and deployment concepts on Microsoft Azure.
-            </p>
-            <div class="space-y-1 text-xs text-slate-400">
-              <p>• User authentication & session handling</p>
-              <p>• REST API integration & database flow</p>
-              <p>• Microsoft Azure cloud architecture</p>
-            </div>
-            <div class="pt-2 flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">Java</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">React.js</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">Spring Boot</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-white/5">Microsoft Azure</span>
-            </div>
-            <a href="https://beamish-wisp-41e109.netlify.app/#projects" target="_blank" class="mt-3 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-purple-600 via-sky-600 to-cyan-500 text-white hover:opacity-90 transition-opacity w-full">
-              <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span>Launch Live Demo & Login Gateway</span>
-            </a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Internship Experience -->
-  <section id="experience" class="py-24 relative z-10 bg-slate-950/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-          Internship <span class="text-gradient">Experience</span>
-        </h2>
-        <p class="text-sm text-slate-400 max-w-xl mx-auto">
-          Domain training completed with Corizo in Cloud Infrastructure and Cybersecurity.
-        </p>
-        <div class="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto rounded-full"></div>
-      </div>
-
-      <div class="max-w-3xl mx-auto space-y-6">
-        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-purple-500/20 text-purple-300 border border-purple-500/30">Internship Training</span>
-            <span class="text-xs font-mono text-cyan-400">June 2026 – July 2026</span>
-          </div>
-          <h3 class="text-lg font-bold text-white">Cyber Security Intern | Corizo</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Successfully completed Cyber Security internship training, gaining foundational knowledge of cybersecurity concepts and practices. Enhanced understanding of cybersecurity principles, security awareness, and approaches to protecting digital environments.
-          </p>
+    <!-- Credentials & Academics -->
+    <section id="education-certs" class="py-24">
+      <div class="max-w-[1320px] mx-auto px-5 sm:px-8 space-y-12">
+        <div>
+          <p class="eyebrow-orange">Credentials & Academics</p>
+          <h2 class="text-3xl sm:text-5xl font-black text-white mt-1">
+            Board Credentials & <span class="text-orange-500">Certificates</span>
+          </h2>
         </div>
 
-        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Internship Training</span>
-            <span class="text-xs font-mono text-cyan-400">Jan 2026 – Feb 2026</span>
-          </div>
-          <h3 class="text-lg font-bold text-white">Cloud Computing Intern | Corizo</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Successfully completed internship training in Cloud Computing, gaining knowledge of cloud computing concepts, technologies, and infrastructure. Developed foundational understanding of cloud-based solutions and computing environments.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certifications" class="py-24 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-          Professional <span class="text-gradient">Certifications</span>
-        </h2>
-        <p class="text-sm text-slate-400 max-w-xl mx-auto">
-          12 verified industry credentials across Cloud, AI, Modern Web Development, and Cybersecurity.
-        </p>
-        <div class="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto rounded-full"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-red-950/40 text-red-300 border border-red-500/30">Oracle</span>
-            <span class="text-xs font-mono text-slate-400">Oct 2025</span>
-          </div>
-          <h3 class="text-sm font-bold text-white">Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">OCI AI Services, generative models and LLM fundamentals.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-950/40 text-blue-300 border border-blue-500/30">Google Cloud</span>
-            <span class="text-xs font-mono text-slate-400">Jun 2026</span>
-          </div>
-          <h3 class="text-sm font-bold text-white">Google Cloud Career Launchpad – Computing Foundations Track</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">Infrastructure, IAM policies, virtualization and cloud foundations.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-950/40 text-amber-300 border border-amber-500/30">NPTEL</span>
-            <span class="text-xs font-mono text-slate-400">Apr 2026</span>
-          </div>
-          <h3 class="text-sm font-bold text-white">Introduction to Internet of Things – Elite (81%)</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">Sensor telemetry, MQTT/CoAP protocols and cloud data processing.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-950/40 text-amber-300 border border-amber-500/30">NPTEL</span>
-            <span class="text-xs font-mono text-slate-400">Oct 2025</span>
-          </div>
-          <h3 class="text-sm font-bold text-white">Programming in Java</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">OOP architecture, collections, multithreading and robust system design.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950/40 text-cyan-300 border border-cyan-500/30">Infosys Springboard</span>
-            <span class="text-xs font-mono text-slate-400">Mar 2026</span>
-          </div>
-          <h3 class="text-sm font-bold text-white">Architecting Cloud Computing Solutions on Microsoft Azure</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">Azure Virtual Networks, App Services and scalable cloud hosting.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-950/40 text-purple-300 border border-purple-500/30">CodeTantra</span>
-            <span class="text-xs font-mono text-slate-400">Feb 2026</span>
-          </div>
-          <h3 class="text-sm font-bold text-white">Software Development Practices</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">Clean code, algorithmic thinking, debugging and modular software engineering.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education & Problem Solving -->
-  <section id="education" class="py-24 relative z-10 bg-slate-950/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-          Education & <span class="text-gradient">Problem Solving</span>
-        </h2>
-        <div class="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto rounded-full"></div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-7 space-y-6">
-          <div class="glass-card rounded-2xl p-6 sm:p-7 border border-white/10 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-mono bg-purple-500/20 text-purple-300">Currently Pursuing (CSE)</span>
-              <span class="text-xs font-mono text-cyan-400">2024 – 2028</span>
-            </div>
-            <h4 class="text-base sm:text-lg font-bold text-white">Bachelor of Technology (B.Tech) in Computer Science and Engineering (CSE)</h4>
-            <p class="text-sm font-medium text-cyan-300">R.M.D. Engineering College (Chennai)</p>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Coursework in Computer Science Engineering, Algorithms, Operating Systems, Database Management Systems, and Cloud Computing. Specialized focus on AI/ML and distributed applications.
-            </p>
-          </div>
-
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Intermediate Certificate Card -->
           <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-mono bg-slate-800 text-slate-300">Completed (2024)</span>
-              <span class="text-xs font-mono text-cyan-400">2022 – 2024</span>
+            <span class="text-[10px] font-mono text-orange-400 font-bold">STATE BOARD ACADEMIC</span>
+            <h4 class="text-base font-bold text-white">Intermediate (Class XII) — 872/1000 Grade A</h4>
+            <p class="text-xs text-white/60">Board of Intermediate Education, Andhra Pradesh (Sanskriti Junior College)</p>
+            <div class="pt-3 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/certificates/intermediate-12th-certificate.jpg" target="_blank" class="btn-pill-dark text-xs py-1 px-3">
+                <span>View 12th Board Certificate ↗</span>
+              </a>
             </div>
-            <h4 class="text-base font-bold text-white">Higher Secondary Certificate (HSC) — Senior Secondary</h4>
-            <p class="text-sm font-medium text-cyan-300">Sanskriti jr college (Tirupati)</p>
-            <p class="text-xs text-slate-300">Mathematics, Physics, Chemistry (MPC) stream.</p>
           </div>
-        </div>
 
-        <!-- Problem Solving Spotlight -->
-        <div class="lg:col-span-5 glass-card rounded-2xl p-6 sm:p-7 border border-white/10 space-y-4 bg-gradient-to-br from-slate-900/90 to-purple-950/30">
-          <div class="flex items-center justify-between pb-3 border-b border-white/10">
-            <div>
-              <h4 class="text-lg font-bold text-white">SkillRack Profile</h4>
-              <p class="text-xs font-mono text-slate-400">Competitive Programming</p>
+          <!-- 10th SSC Certificate Card -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
+            <span class="text-[10px] font-mono text-orange-400 font-bold">STATE BOARD ACADEMIC</span>
+            <h4 class="text-base font-bold text-white">Secondary School (SSC 10th) — 481/600 First Division</h4>
+            <p class="text-xs text-white/60">Board of Secondary Education, Andhra Pradesh (Gautham High School)</p>
+            <div class="pt-3 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/certificates/ssc-10th-certificate.jpg" target="_blank" class="btn-pill-dark text-xs py-1 px-3">
+                <span>View 10th Board Certificate ↗</span>
+              </a>
             </div>
-            <span class="text-2xl font-mono font-extrabold text-gradient">1300+</span>
           </div>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Demonstrated strong algorithmic proficiency, data structure mastery, and programming logic across Python, Java, and C through over 1300 solved problems.
+
+          <!-- Oracle AI Foundations -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
+            <span class="text-[10px] font-mono text-orange-400 font-bold">ORACLE CORPORATION</span>
+            <h4 class="text-base font-bold text-white">OCI 2025 Certified AI Foundations Associate</h4>
+            <p class="text-xs text-white/60">Oracle Cloud Infrastructure Generative AI & Machine Learning Foundations</p>
+            <div class="pt-3 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/certificates/oracle-oci-ai-foundations-2025.pdf" target="_blank" class="btn-pill-dark text-xs py-1 px-3">
+                <span>View PDF ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Google Cloud -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
+            <span class="text-[10px] font-mono text-orange-400 font-bold">GOOGLE CLOUD</span>
+            <h4 class="text-base font-bold text-white">Google Cloud Career Launchpad — Computing Foundations</h4>
+            <p class="text-xs text-white/60">Cloud infrastructure, IAM, Compute, and Storage architectures</p>
+            <div class="pt-3 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/certificates/google-cloud-computing-foundations.pdf" target="_blank" class="btn-pill-dark text-xs py-1 px-3">
+                <span>View PDF ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- NPTEL IoT -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
+            <span class="text-[10px] font-mono text-orange-400 font-bold">NPTEL / IIT KHARAGPUR</span>
+            <h4 class="text-base font-bold text-white">Introduction to Internet of Things (Elite)</h4>
+            <p class="text-xs text-white/60">Sensors, actuators, MQTT protocols, edge computing and cloud analytics</p>
+            <div class="pt-3 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/certificates/nptel-introduction-to-iot-elite.pdf" target="_blank" class="btn-pill-dark text-xs py-1 px-3">
+                <span>View PDF ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Infosys Azure -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
+            <span class="text-[10px] font-mono text-orange-400 font-bold">INFOSYS SPRINGBOARD</span>
+            <h4 class="text-base font-bold text-white">Architecting Cloud Computing Solutions on Microsoft Azure</h4>
+            <p class="text-xs text-white/60">Azure architecture patterns, Virtual Networks, App Services and SQL</p>
+            <div class="pt-3 border-t border-white/10">
+              <a href="https://beamish-wisp-41e109.netlify.app/certificates/infosys-azure-architecture.pdf" target="_blank" class="btn-pill-dark text-xs py-1 px-3">
+                <span>View PDF ↗</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Connect / Contact -->
+    <section id="contact" class="py-24">
+      <div class="max-w-[1320px] mx-auto px-5 sm:px-8">
+        <div class="glass-card rounded-3xl p-10 sm:p-16 border border-white/10 text-center space-y-8 flex flex-col items-center">
+          <span class="eyebrow-orange">HAVE AN OPPORTUNITY?</span>
+          <h2 class="text-3xl sm:text-6xl font-black text-white tracking-tight max-w-3xl leading-tight">
+            LET'S BUILD SOMETHING <br />
+            <span class="text-orange-500">EXTRAORDINARY</span>
+          </h2>
+          <p class="text-sm sm:text-base text-white/70 max-w-xl mx-auto leading-relaxed">
+            Whether you have an engineering internship opportunity, a collaborative AI/Cloud project, or technical inquiries.
           </p>
-          <div class="grid grid-cols-3 gap-2 pt-2 text-center text-xs">
-            <div class="p-2 rounded-lg bg-slate-900 border border-white/5 font-mono text-slate-200">Python</div>
-            <div class="p-2 rounded-lg bg-slate-900 border border-white/5 font-mono text-slate-200">Java</div>
-            <div class="p-2 rounded-lg bg-slate-900 border border-white/5 font-mono text-slate-200">JavaScript</div>
+
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="mailto:anirudhreddy2601@gmail.com" class="btn-orange text-sm py-3 px-6">
+              <span>anirudhreddy2601@gmail.com</span>
+            </a>
+            <a href="tel:+919182348773" class="btn-pill-dark text-sm py-3 px-6">
+              <span>+91 91823 48773</span>
+            </a>
+            <a href="https://www.linkedin.com/in/peddireddy-leela-anirudh-reddy-11a511342" target="_blank" class="btn-pill-dark text-sm py-3 px-6">
+              <span>LinkedIn Profile ↗</span>
+            </a>
+          </div>
+
+          <div class="w-full pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-8 text-xs font-mono text-white/60">
+            <span>GITHUB: @ANIRUDHREDDY26</span>
+            <span>•</span>
+            <span>R.M.D. ENGINEERING COLLEGE, CHENNAI</span>
+            <span>•</span>
+            <span>SKILLRACK: 1300+ SOLVED</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-24 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-          Get in <span class="text-gradient">Touch</span>
-        </h2>
-        <div class="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto rounded-full"></div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-5xl mx-auto">
-        <div class="lg:col-span-5 glass-card rounded-2xl p-6 sm:p-7 border border-white/10 space-y-4">
-          <h3 class="text-base font-bold text-white">Contact Information</h3>
-          <div class="space-y-3 text-xs">
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-white/5 flex items-center justify-between">
-              <div>
-                <p class="text-[10px] font-mono text-slate-400">EMAIL</p>
-                <p class="font-semibold text-white">anirudhleela0@gmail.com</p>
-              </div>
-              <button onclick="copyToClipboard('anirudhleela0@gmail.com', this)" class="px-2 py-1 rounded bg-slate-800 text-[10px] text-cyan-400">Copy</button>
-            </div>
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-white/5 flex items-center justify-between">
-              <div>
-                <p class="text-[10px] font-mono text-slate-400">PHONE</p>
-                <p class="font-semibold text-white">+91 8977720014</p>
-              </div>
-              <button onclick="copyToClipboard('+91 8977720014', this)" class="px-2 py-1 rounded bg-slate-800 text-[10px] text-cyan-400">Copy</button>
-            </div>
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-white/5">
-              <p class="text-[10px] font-mono text-slate-400">LOCATION</p>
-              <p class="font-semibold text-white">Chennai, Tamil Nadu, India - 601206</p>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-white/5 flex gap-3">
-            <a href="https://github.com/ANIRUDHREDDY26" target="_blank" class="flex-1 py-2 rounded-xl bg-slate-900 border border-white/10 text-center text-xs font-semibold text-slate-200 hover:text-cyan-300">GitHub</a>
-            <a href="https://linkedin.com" target="_blank" class="flex-1 py-2 rounded-xl bg-slate-900 border border-white/10 text-center text-xs font-semibold text-slate-200 hover:text-cyan-300">LinkedIn</a>
-          </div>
-        </div>
-
-        <!-- Quick Message Form -->
-        <div class="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8 border border-white/10 space-y-4">
-          <h3 class="text-base font-bold text-white">Send a Message</h3>
-          <form onsubmit="handleContactSubmit(event)" class="space-y-3 text-xs">
-            <input type="text" id="contactName" required placeholder="Your Name" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
-            <input type="email" id="contactEmail" required placeholder="Your Email" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
-            <input type="text" id="contactSubject" required placeholder="Subject" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
-            <textarea id="contactMessage" required rows="4" placeholder="Your Message..." class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 resize-none"></textarea>
-            <button type="submit" class="w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 hover:scale-[1.01] transition-all">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="border-t border-white/10 bg-[#02050e] py-10 text-center text-xs text-slate-400">
-    <p class="font-bold text-white">PEDDI REDDY LEELA ANIRUDH REDDY</p>
-    <p class="text-[11px] text-cyan-400 mt-1">Building Intelligent Solutions with AI, Cloud and Modern Technologies.</p>
-    <p class="text-[10px] text-slate-500 mt-4">© 2026 PEDDI REDDY LEELA ANIRUDH REDDY. All rights reserved.</p>
+  <footer class="relative z-10 border-t border-white/10 bg-black py-10">
+    <div class="max-w-[1320px] mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/50">
+      <p>© 2026 PEDDI REDDY LEELA ANIRUDH REDDY. B.Tech Computer Science and Engineering.</p>
+      <a href="#home" class="hover:text-orange-400">Back to top ↑</a>
+    </div>
   </footer>
 
-  <!-- Resume Modal -->
-  <div id="resumeModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-    <div class="relative w-full max-w-3xl glass-card rounded-2xl border border-white/20 p-6 bg-[#070d1e] max-h-[90vh] flex flex-col">
-      <div class="flex items-center justify-between pb-4 border-b border-white/10">
-        <div>
-          <h3 class="text-base font-bold text-white">Curriculum Vitae</h3>
-          <p class="text-[11px] font-mono text-cyan-400">PEDDI REDDY LEELA ANIRUDH REDDY (B.Tech CSE)</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <button onclick="window.print()" class="px-3 py-1.5 rounded-lg text-xs bg-slate-800 text-white border border-white/10">Print / PDF</button>
-          <button onclick="closeResumeModal()" class="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white">✕</button>
-        </div>
-      </div>
-
-      <div class="overflow-y-auto pr-2 mt-4 space-y-4 text-xs text-slate-300">
-        <div>
-          <h4 class="font-bold text-white uppercase text-sm">PEDDI REDDY LEELA ANIRUDH REDDY</h4>
-          <p class="text-[11px] text-slate-400">Chennai, Tamil Nadu | +91 8977720014 | anirudhleela0@gmail.com | github.com/ANIRUDHREDDY26</p>
-        </div>
-        <div class="border-t border-white/5 pt-2">
-          <p class="font-bold text-cyan-400 uppercase text-[11px]">Professional Summary</p>
-          <p class="mt-1">Computer Science Engineering undergraduate with a strong interest in Cloud Computing, DevOps, AI/ML, and Cloud Solutions Architecture.</p>
-        </div>
-        <div class="border-t border-white/5 pt-2">
-          <p class="font-bold text-cyan-400 uppercase text-[11px]">Main Technical Skills</p>
-          <p class="mt-1">• Programming: Python, Java, JavaScript</p>
-          <p>• AI/ML: Generative AI & LLMs, Machine Learning, RAG & Vector Embeddings</p>
-          <p>• Cloud: Microsoft Azure, Google Cloud (GCP), Oracle Cloud (OCI)</p>
-          <p>• Full-Stack: React.js, Spring Boot, MySQL, MongoDB Atlas (Vector Search)</p>
-          <p>• Cybersecurity & IoT: Cybersecurity Fundamentals, Internet of Things</p>
-        </div>
-        <div class="border-t border-white/5 pt-2">
-          <p class="font-bold text-cyan-400 uppercase text-[11px]">Education</p>
-          <p class="mt-1 font-semibold text-white">B.Tech in Computer Science and Engineering (CSE) — R.M.D. Engineering College (2024–2028)</p>
-          <p>SkillRack: 1300+ Problems Solved</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
+  <!-- Canvas Particle Script -->
   <script>
-    // Particle animation
-    const canvas = document.getElementById('particleCanvas');
-    if (canvas) {
+    (function () {
+      const canvas = document.getElementById('animation-canvas');
       const ctx = canvas.getContext('2d');
-      let w = canvas.width = window.innerWidth;
-      let h = canvas.height = window.innerHeight;
-      window.addEventListener('resize', () => {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-      });
-      const particles = [];
-      for (let i = 0; i < 45; i++) {
-        particles.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          r: Math.random() * 1.5 + 0.8
-        });
+      let particles = [];
+      const particleCount = 65;
+      let mouse = { x: null, y: null, radius: 150 };
+
+      function resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        ctx.scale(dpr, dpr);
       }
-      function draw() {
-        ctx.clearRect(0, 0, w, h);
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
-          if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * window.innerWidth;
+          this.y = Math.random() * window.innerHeight;
+          this.vx = (Math.random() - 0.5) * 0.5;
+          this.vy = (Math.random() - 0.5) * 0.5;
+          this.radius = Math.random() * 2 + 1;
+          this.color = Math.random() > 0.4 
+            ? 'rgba(255, 85, 0, ' + (Math.random() * 0.5 + 0.25) + ')' 
+            : 'rgba(255, 255, 255, ' + (Math.random() * 0.4 + 0.15) + ')';
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
+          if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
+
+          if (mouse.x !== null && mouse.y !== null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              const force = (mouse.radius - dist) / mouse.radius;
+              this.x -= dx * force * 0.02;
+              this.y -= dy * force * 0.02;
+            }
+          }
+        }
+
+        draw() {
           ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
           ctx.fill();
         }
-        requestAnimationFrame(draw);
       }
-      draw();
-    }
 
-    // Typewriter
-    const roles = [
-      "Computer Science Engineer (CSE)",
-      "AI & Full-Stack Developer",
-      "Generative AI Specialist",
-      "Cloud Computing Enthusiast",
-      "Cybersecurity Enthusiast"
-    ];
-    let rIdx = 0, charIdx = 0, isDel = false;
-    function typeRole() {
-      const el = document.getElementById('typewriterText');
-      if (!el) return;
-      const cur = roles[rIdx];
-      if (!isDel) {
-        el.textContent = cur.substring(0, charIdx + 1);
-        charIdx++;
-        if (charIdx === cur.length) {
-          isDel = true;
-          setTimeout(typeRole, 2000);
-          return;
-        }
-      } else {
-        el.textContent = cur.substring(0, charIdx - 1);
-        charIdx--;
-        if (charIdx === 0) {
-          isDel = false;
-          rIdx = (rIdx + 1) % roles.length;
+      function init() {
+        resizeCanvas();
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new Particle());
         }
       }
-      setTimeout(typeRole, isDel ? 50 : 100);
-    }
-    typeRole();
 
-    // Mobile Menu
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('hidden');
-    }
+      function drawLines() {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            let dx = particles[i].x - particles[j].x;
+            let dy = particles[i].y - particles[j].y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
 
-    // Resume Modal
-    function openResumeModal() {
-      const modal = document.getElementById('resumeModal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-    function closeResumeModal() {
-      const modal = document.getElementById('resumeModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = 'rgba(255, 255, 255, ' + (0.12 * (1 - dist / 120)) + ')';
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+      }
 
-    // Copy helper
-    function copyToClipboard(text, btn) {
-      navigator.clipboard.writeText(text);
-      const original = btn.textContent;
-      btn.textContent = 'Copied!';
-      btn.classList.add('text-emerald-400');
-      setTimeout(() => {
-        btn.textContent = original;
-        btn.classList.remove('text-emerald-400');
-      }, 2000);
-    }
+      function animate() {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-    // Contact form submit
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('contactName').value;
-      const email = document.getElementById('contactEmail').value;
-      const subject = document.getElementById('contactSubject').value;
-      const message = document.getElementById('contactMessage').value;
-      const mailto = `mailto:anirudhleela0@gmail.com?subject=[Portfolio Inquiry] ${encodeURIComponent(subject)}&body=From: ${encodeURIComponent(name)} (${encodeURIComponent(email)})%0A%0A${encodeURIComponent(message)}`;
-      window.open(mailto, '_blank');
-      alert('Thank you! Preparing message in your email client.');
-      e.target.reset();
-    }
+        const gradient = ctx.createRadialGradient(
+          window.innerWidth / 2, window.innerHeight / 2, 10,
+          window.innerWidth / 2, window.innerHeight / 2, Math.max(window.innerWidth, window.innerHeight)
+        );
+        gradient.addColorStop(0, '#0c0a0a');
+        gradient.addColorStop(0.5, '#000000');
+        gradient.addColorStop(1, '#000000');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+
+        drawLines();
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', init);
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      init();
+      animate();
+    })();
   </script>
 </body>
 </html>

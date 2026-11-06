@@ -111,11 +111,11 @@ export const ProjectLiveDemoModal: React.FC<ProjectLiveDemoModalProps> = ({ proj
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-5xl h-[92vh] glass-card rounded-2xl border border-white/20 bg-[#060c1d] shadow-2xl flex flex-col overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-5xl h-[92vh] glass-card rounded-3xl border border-white/20 bg-[#0c0a0a] shadow-2xl flex flex-col overflow-hidden">
         
         {/* Top Window Bar */}
-        <div className="px-5 py-3.5 bg-slate-900/90 border-b border-white/10 flex items-center justify-between shrink-0">
+        <div className="px-5 py-3.5 bg-[#050505] border-b border-white/10 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5">
               <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
@@ -124,10 +124,10 @@ export const ProjectLiveDemoModal: React.FC<ProjectLiveDemoModalProps> = ({ proj
             </div>
             <div className="h-4 w-px bg-white/15 mx-1" />
             <div className="flex items-center gap-2">
-              {isSecurity && <Shield className="w-4 h-4 text-purple-400" />}
-              {isIoT && <Radio className="w-4 h-4 text-cyan-400" />}
-              {isFullStack && <Cloud className="w-4 h-4 text-sky-400" />}
-              <span className="text-xs sm:text-sm font-semibold text-white tracking-wide">
+              {isSecurity && <Shield className="w-4 h-4 text-orange-400" />}
+              {isIoT && <Radio className="w-4 h-4 text-orange-400" />}
+              {isFullStack && <Cloud className="w-4 h-4 text-orange-400" />}
+              <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
                 {isSecurity && "CloudSec Sentinel AI — Threat Intelligence Portal"}
                 {isIoT && "EcoSense Cloud IoT — Environmental Telemetry Command"}
                 {isFullStack && "CloudStack Nexus — Azure Full-Stack Enterprise Hub"}
@@ -136,13 +136,13 @@ export const ProjectLiveDemoModal: React.FC<ProjectLiveDemoModalProps> = ({ proj
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              Interactive Simulation
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-orange-500/10 text-orange-400 border border-orange-500/30">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
+              Live Simulation
             </span>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors"
+              className="p-1.5 rounded-full bg-white/10 text-white/70 hover:text-white hover:bg-white/20 transition-colors"
               title="Close Live Demo"
             >
               <X className="w-4 h-4" />
@@ -151,7 +151,7 @@ export const ProjectLiveDemoModal: React.FC<ProjectLiveDemoModalProps> = ({ proj
         </div>
 
         {/* Modal Content: Login Screen OR Dashboard */}
-        <div className="flex-1 overflow-y-auto bg-gradient-to-b from-[#060c1d] via-[#091228] to-[#050a17]">
+        <div className="flex-1 overflow-y-auto bg-gradient-to-b from-[#0c0a0a] via-[#070707] to-black">
           {!isAuthenticated ? (
             <ProjectLoginView
               project={project}
@@ -355,7 +355,7 @@ const ProjectLoginView: React.FC<LoginViewProps> = ({
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 rounded-xl font-semibold text-xs sm:text-sm text-white bg-gradient-to-r from-purple-600 via-sky-600 to-cyan-500 hover:opacity-95 shadow-lg shadow-cyan-900/20 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-3.5 rounded-2xl font-bold text-xs sm:text-sm text-white bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
             >
               {isLoading ? (
                 <>
@@ -365,7 +365,7 @@ const ProjectLoginView: React.FC<LoginViewProps> = ({
               ) : (
                 <>
                   <Lock className="w-4 h-4" />
-                  <span>Authenticate & Launch Demo</span>
+                  <span>Authenticate & Launch Live Demo ↗</span>
                 </>
               )}
             </button>

@@ -1,246 +1,147 @@
-import React, { useState, useEffect } from 'react';
-import { PERSONAL_INFO } from '../data/portfolioData';
-import { 
-  ArrowRight, 
-  FileDown, 
-  Mail, 
-  Terminal, 
-  Sparkles, 
-  Cloud, 
-  ShieldCheck, 
-  Cpu, 
-  Code2, 
-  ExternalLink,
-  Camera
-} from 'lucide-react';
+import React from 'react';
+import { ArrowUpRight, Download, Send, Sparkles, Shield, Cpu, Cloud, Terminal } from 'lucide-react';
 
 interface HeroProps {
   onOpenResume: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(120);
-
-  const roles = PERSONAL_INFO.typewriterRoles;
-
-  useEffect(() => {
-    const currentRole = roles[currentRoleIndex];
-
-    const handleTyping = () => {
-      if (!isDeleting) {
-        setDisplayedText(currentRole.substring(0, displayedText.length + 1));
-        if (displayedText.length + 1 === currentRole.length) {
-          setTimeout(() => setIsDeleting(true), 2000);
-          setTypingSpeed(50);
-        }
-      } else {
-        setDisplayedText(currentRole.substring(0, displayedText.length - 1));
-        if (displayedText.length === 0) {
-          setIsDeleting(false);
-          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-          setTypingSpeed(120);
-        }
-      }
-    };
-
-    const timer = setTimeout(handleTyping, typingSpeed);
-    return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, currentRoleIndex, typingSpeed, roles]);
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section id="home" className="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <section id="home" className="min-h-screen pt-36 sm:pt-44 pb-16 relative z-10">
+      <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
+        
+        {/* Split Left/Right Hero Content */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
           
-          {/* Left Column: Text & CTAs (7 cols) */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          {/* Left Side: Title & Info */}
+          <div className="w-full lg:max-w-[62%] space-y-6 text-left">
             
-            {/* Top Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-300 text-xs font-medium backdrop-blur-md shadow-lg shadow-cyan-900/20 animate-pulse-slow">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Pursuing B.Tech in Computer Science & Engineering (CSE)</span>
+            {/* Domain Badges */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-white/5 border border-white/10 text-orange-400 uppercase">
+                AI & MACHINE LEARNING
+              </span>
+              <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-white/5 border border-white/10 text-white/80 uppercase">
+                CLOUD ARCHITECTURE
+              </span>
+              <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-white/5 border border-white/10 text-white/80 uppercase">
+                CYBERSECURITY
+              </span>
+              <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-white/5 border border-white/10 text-white/80 uppercase">
+                FULL STACK
+              </span>
+              <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-white/5 border border-white/10 text-orange-400 uppercase">
+                IOT
+              </span>
             </div>
 
-            {/* Greeting & Name */}
-            <div className="space-y-2">
-              <p className="text-slate-400 font-mono text-sm tracking-wider uppercase flex items-center justify-center lg:justify-start gap-2">
-                <Terminal className="w-4 h-4 text-cyan-400" />
-                Hello, I'm
+            {/* Massive Title */}
+            <h1 className="text-4xl sm:text-6xl lg:text-[76px] font-black leading-[1.02] tracking-tight text-white uppercase">
+              HEY, I'M <br />
+              <span className="text-[#ff5500]">PEDDI REDDY LEELA ANIRUDH REDDY</span>
+            </h1>
+
+            {/* Subtitle & Bio */}
+            <div className="space-y-4 max-w-2xl">
+              <p className="text-base sm:text-lg text-white font-medium leading-snug">
+                Building intelligent, scalable, and secure products combining <span className="serif-italic text-2xl text-orange-400">Generative AI</span>, multi-cloud architectures, and modern full-stack systems.
               </p>
               
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                <span className="block font-sans text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300">
-                  PEDDI REDDY LEELA
-                </span>
-                <span className="block bg-gradient-to-r from-purple-400 via-sky-400 to-cyan-300 bg-clip-text text-transparent mt-1">
-                  ANIRUDH REDDY
-                </span>
-              </h1>
+              <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+                Computer Science & Engineering (CSE) undergraduate at <strong className="text-white">R.M.D. Engineering College</strong> (Chennai, 2024–2028). Continuously mastering problem-solving on SkillRack (<strong className="text-orange-400">1300+ Solved</strong>), building hands-on cloud security and IoT telemetry prototypes, and architecting enterprise web applications.
+              </p>
             </div>
-
-            {/* Professional Title & Typewriter */}
-            <div className="space-y-1">
-              <h2 className="text-lg sm:text-xl font-bold text-slate-200 flex flex-wrap items-center justify-center lg:justify-start gap-2">
-                <span>Computer Science Engineering</span>
-                <span className="text-cyan-400">•</span>
-                <span className="text-purple-300">AI & Full-Stack Developer</span>
-              </h2>
-
-              <div className="h-8 flex items-center justify-center lg:justify-start gap-2">
-                <span className="text-slate-400 text-sm font-mono">Specializing in</span>
-                <span className="text-cyan-400 font-mono font-semibold text-sm sm:text-base border-r-2 border-cyan-400 pr-1 animate-pulse">
-                  {displayedText}
-                </span>
-              </div>
-            </div>
-
-            {/* Bio paragraph */}
-            <p className="text-slate-300/90 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-              {PERSONAL_INFO.tagline}
-            </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
-              <button
-                onClick={() => scrollTo('projects')}
-                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 shadow-lg shadow-purple-900/30 hover:shadow-cyan-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-              >
-                <span>Explore My Projects</span>
-                <ArrowRight className="w-4 h-4 text-cyan-200" />
-              </button>
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <a href="#projects" className="btn-orange">
+                <span>View My Work</span>
+                <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[11px]">
+                  ↗
+                </span>
+              </a>
 
-              <button
-                onClick={onOpenResume}
-                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 hover:border-cyan-500/50 backdrop-blur-md hover:text-white transition-all duration-200 shadow-md"
-              >
-                <FileDown className="w-4 h-4 text-cyan-400" />
+              <button onClick={onOpenResume} className="btn-pill-dark">
+                <Download className="w-4 h-4 text-orange-400" />
                 <span>Download Resume</span>
               </button>
 
-              <button
-                onClick={() => scrollTo('contact')}
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full text-xs sm:text-sm font-medium text-slate-300 hover:text-white bg-slate-900/40 hover:bg-slate-800/60 border border-white/5 hover:border-purple-500/30 transition-all duration-200"
-              >
-                <Mail className="w-4 h-4 text-purple-400" />
-                <span>Contact Me</span>
-              </button>
-            </div>
-
-            {/* Stats Bar */}
-            <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto lg:mx-0">
-              {PERSONAL_INFO.stats.map((stat, idx) => (
-                <div
-                  key={idx}
-                  className="glass-card rounded-xl p-3 text-center border border-white/5 hover:border-cyan-500/30 transition-colors"
-                >
-                  <p className="text-lg sm:text-xl font-mono font-bold bg-gradient-to-r from-purple-300 to-cyan-300 bg-clip-text text-transparent">
-                    {stat.value}
-                  </p>
-                  <p className="text-[11px] font-medium text-slate-200 truncate mt-0.5">
-                    {stat.label}
-                  </p>
-                  <p className="text-[9px] text-slate-400 font-mono truncate">
-                    {stat.subtitle}
-                  </p>
-                </div>
-              ))}
+              <a href="#contact" className="btn-pill-dark">
+                <Send className="w-4 h-4 text-white/70" />
+                <span>Let's Connect</span>
+              </a>
             </div>
 
           </div>
 
-          {/* Right Column: Profile Visual Placeholder (5 cols) */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
-              
-              {/* Outer Glowing Rings */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-600 via-blue-600 to-cyan-400 blur-2xl opacity-30 animate-pulse-slow" />
-              
-              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 p-[2px] shadow-2xl shadow-purple-900/40 animate-glow">
+          {/* Right Side: Portrait Image in Glow Card */}
+          <div className="w-full lg:max-w-[340px] flex justify-center lg:justify-end">
+            <div className="profile-card-glow max-w-[320px] w-full">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black/60 aspect-[4/5]">
+                <img
+                  src="/anirudh.jpg"
+                  alt="PEDDI REDDY LEELA ANIRUDH REDDY"
+                  className="w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/profile.jpg';
+                  }}
+                />
                 
-                {/* Inner Card Container */}
-                <div className="w-full h-full bg-[#0a1329]/90 rounded-[22px] backdrop-blur-xl p-6 flex flex-col items-center justify-between relative overflow-hidden border border-white/10">
-                  
-                  {/* Subtle top tech grid */}
-                  <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-purple-500/10 to-transparent pointer-events-none" />
-                  
-                  {/* Tech status badge */}
-                  <div className="w-full flex items-center justify-between text-xs font-mono text-slate-400 pb-2 border-b border-white/5">
-                    <span className="flex items-center gap-1.5 text-cyan-400">
-                      <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-                      SYSTEM_ACTIVE
-                    </span>
-                    <span className="text-[10px] text-slate-500">ID: AR-2026</span>
-                  </div>
+                {/* Subtle vignette gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
 
-                  {/* Profile Photograph Container */}
-                  <div className="relative my-auto group">
-                    <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl bg-gradient-to-tr from-purple-900/60 via-slate-800 to-cyan-900/60 p-1 border-2 border-cyan-400/50 shadow-2xl shadow-cyan-900/40 flex items-center justify-center relative overflow-hidden group-hover:border-purple-400 transition-all duration-300">
-                      
-                      {/* Anirudh's Real Photo */}
-                      <img
-                        src="/anirudh.jpg"
-                        alt="PEDDI REDDY LEELA ANIRUDH REDDY"
-                        className="w-full h-full object-cover object-center rounded-xl group-hover:scale-105 transition-transform duration-500"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          if (target.src.indexOf('profile.jpg') === -1) {
-                            target.src = '/profile.jpg';
-                          } else {
-                            target.src = '/avatar.svg';
-                          }
-                        }}
-                      />
-
-                      {/* Subtle Glass Gradient Over Lower Half */}
-                      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-                    </div>
-
-                    {/* Verified badge */}
-                    <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 rounded-full p-2 shadow-xl shadow-black border border-white/20">
-                      <ShieldCheck className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Bottom Avatar Info */}
-                  <div className="w-full text-center pt-3 border-t border-white/5">
-                    <p className="font-mono text-xs font-bold text-white tracking-wide">
-                      PEDDI REDDY LEELA ANIRUDH REDDY
-                    </p>
-                    <p className="text-[11px] text-cyan-300 font-medium flex items-center justify-center gap-1.5 mt-0.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                      B.Tech CSE • R.M.D. Engg College
-                    </p>
-                  </div>
-
-                  {/* Floating Tech Badges */}
-                  <div className="absolute -top-3 -right-3 px-3 py-1 rounded-lg bg-[#070e20] border border-cyan-500/40 shadow-lg text-[10px] font-mono text-cyan-300 flex items-center gap-1.5 backdrop-blur-md">
-                    <Cloud className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>Cloud & AI</span>
-                  </div>
-                  
-                  <div className="absolute -bottom-3 -left-3 px-3 py-1 rounded-lg bg-[#070e20] border border-purple-500/40 shadow-lg text-[10px] font-mono text-purple-300 flex items-center gap-1.5 backdrop-blur-md">
-                    <Code2 className="w-3.5 h-3.5 text-purple-400" />
-                    <span>1300+ Solved</span>
-                  </div>
-
+                {/* Bottom Card Identity Pill */}
+                <div className="absolute bottom-3 inset-x-3 p-3 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 text-center">
+                  <p className="text-xs font-bold font-mono text-white tracking-wide">
+                    PEDDI REDDY LEELA ANIRUDH REDDY
+                  </p>
+                  <p className="text-[11px] font-mono text-orange-400 mt-0.5 flex items-center justify-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    B.Tech CSE • R.M.D. Engg College
+                  </p>
                 </div>
               </div>
-
             </div>
           </div>
 
         </div>
+
+        {/* Services Grid (Hafruddin 4-item bottom bar) */}
+        <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 sm:p-8 rounded-3xl bg-[#0c0a0a]/60 backdrop-blur-xl border border-white/10">
+          <div className="space-y-1">
+            <span className="text-xs font-mono font-bold text-orange-500">#01</span>
+            <h4 className="text-sm sm:text-base font-semibold text-white/95">
+              AI & Machine Learning
+            </h4>
+            <p className="text-xs text-white/60">Neural Models, Prompting, Threat Detection</p>
+          </div>
+
+          <div className="space-y-1">
+            <span className="text-xs font-mono font-bold text-orange-500">#02</span>
+            <h4 className="text-sm sm:text-base font-semibold text-white/95">
+              Cloud Technologies
+            </h4>
+            <p className="text-xs text-white/60">Azure, Google Cloud, Oracle Cloud (OCI)</p>
+          </div>
+
+          <div className="space-y-1">
+            <span className="text-xs font-mono font-bold text-orange-500">#03</span>
+            <h4 className="text-sm sm:text-base font-semibold text-white/95">
+              Cybersecurity & Threat Detection
+            </h4>
+            <p className="text-xs text-white/60">SOC Telemetry, Anomaly ML, Defense</p>
+          </div>
+
+          <div className="space-y-1">
+            <span className="text-xs font-mono font-bold text-orange-500">#04</span>
+            <h4 className="text-sm sm:text-base font-semibold text-white/95">
+              Full-Stack & IoT Systems
+            </h4>
+            <p className="text-xs text-white/60">React.js, Spring Boot, Hardware Telemetry</p>
+          </div>
+        </div>
+
       </div>
     </section>
   );

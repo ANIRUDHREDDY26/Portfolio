@@ -17,11 +17,11 @@ export const App: React.FC = () => {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-[#030712] text-slate-100 selection:bg-purple-600/30 selection:text-cyan-300">
-      {/* Dynamic Animated Particles Background */}
+    <div className="relative min-h-screen bg-black text-white selection:bg-[#ff5500]/30 selection:text-orange-400">
+      {/* Hafruddin Canvas Particle Animation */}
       <ParticleBackground />
 
-      {/* Navigation */}
+      {/* Navigation Header */}
       <Navbar onOpenResume={() => setResumeModalOpen(true)} />
 
       {/* Main Content Sections */}
@@ -40,7 +40,7 @@ export const App: React.FC = () => {
       {/* Footer */}
       <Footer />
 
-      {/* Interactive Resume View & Print Modal */}
+      {/* Digital CV Modal */}
       <ResumeModal
         isOpen={resumeModalOpen}
         onClose={() => setResumeModalOpen(false)}

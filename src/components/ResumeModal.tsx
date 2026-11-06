@@ -66,20 +66,20 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-4xl glass-card rounded-2xl border border-white/20 p-4 sm:p-8 bg-[#070d1e] shadow-2xl max-h-[92vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-4xl glass-card rounded-3xl border border-white/20 p-4 sm:p-8 bg-[#0c0a0a] shadow-2xl max-h-[92vh] flex flex-col">
         
         {/* Modal Top Action Bar */}
         <div className="flex items-center justify-between pb-4 border-b border-white/10 shrink-0">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+            <div className="p-2 rounded-xl bg-orange-500/10 text-orange-400">
               <FileText className="w-5 h-5" />
             </div>
             <div>
               <h3 className="text-sm sm:text-base font-bold text-white">
                 Curriculum Vitae / Resume
               </h3>
-              <p className="text-[11px] font-mono text-cyan-400">
+              <p className="text-[11px] font-mono text-orange-400">
                 PEDDI REDDY LEELA ANIRUDH REDDY
               </p>
             </div>
@@ -88,16 +88,16 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-slate-800 hover:bg-slate-700 border border-white/10 transition-colors"
+              className="btn-pill-dark text-xs py-1.5 px-3"
               title="Print or Save as PDF"
             >
-              <Printer className="w-3.5 h-3.5 text-cyan-400" />
-              <span className="hidden sm:inline">Print / Save as PDF</span>
+              <Printer className="w-3.5 h-3.5 text-orange-400" />
+              <span className="hidden sm:inline">Print / Save PDF</span>
             </button>
 
             <button
               onClick={handleDownloadMarkdown}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-purple-600 to-cyan-500 hover:opacity-95 shadow-md transition-opacity"
+              className="btn-orange text-xs py-1.5 px-3"
               title="Download Resume Document"
             >
               <Download className="w-3.5 h-3.5" />
@@ -106,7 +106,7 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors"
+              className="p-1.5 rounded-full bg-white/10 text-white/70 hover:text-white hover:bg-white/20 transition-colors"
               aria-label="Close"
             >
               <X className="w-5 h-5" />
@@ -115,41 +115,41 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
         </div>
 
         {/* Scrollable Printable Resume Sheet */}
-        <div className="overflow-y-auto pr-2 mt-4 space-y-6 text-slate-200 text-xs sm:text-sm font-sans bg-slate-950/70 p-4 sm:p-6 rounded-xl border border-white/5">
+        <div className="overflow-y-auto pr-2 mt-4 space-y-6 text-white/80 text-xs sm:text-sm font-sans bg-black/80 p-4 sm:p-6 rounded-2xl border border-white/10">
           
           {/* Header Section */}
           <div className="text-center space-y-1.5 pb-4 border-b border-white/10">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white uppercase">
+            <h1 className="text-xl sm:text-2xl font-black tracking-tight text-white uppercase">
               {PERSONAL_INFO.name}
             </h1>
-            <p className="text-xs text-slate-300 font-mono">
+            <p className="text-xs text-white/70 font-mono">
               {PERSONAL_INFO.location} | {PERSONAL_INFO.phone} | {PERSONAL_INFO.email}
             </p>
-            <div className="flex items-center justify-center gap-4 text-xs font-mono text-cyan-400 pt-1">
+            <div className="flex items-center justify-center gap-4 text-xs font-mono text-orange-400 pt-1">
               <span>LinkedIn</span>
               <span>•</span>
               <span>GitHub</span>
               <span>•</span>
-              <span className="text-purple-300">SkillRack: 1300+ Solved</span>
+              <span className="text-white">SkillRack: 1300+ Solved</span>
             </div>
           </div>
 
           {/* Professional Summary */}
           <div className="space-y-1.5">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-white/10 pb-1">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-orange-400 border-b border-white/10 pb-1">
               PROFESSIONAL SUMMARY
             </h2>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-white/70 leading-relaxed">
               {PERSONAL_INFO.aboutText}
             </p>
           </div>
 
           {/* Main Technical Skills */}
           <div className="space-y-1.5">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-white/10 pb-1">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-orange-400 border-b border-white/10 pb-1">
               MAIN TECHNICAL SKILLS
             </h2>
-            <div className="text-xs space-y-1 text-slate-300">
+            <div className="text-xs space-y-1 text-white/70">
               <p><strong className="text-white">Programming:</strong> Python, Java, JavaScript</p>
               <p><strong className="text-white">AI & Machine Learning:</strong> Generative AI & LLMs, Machine Learning, RAG & Vector Embeddings</p>
               <p><strong className="text-white">Cloud Computing:</strong> Microsoft Azure, Google Cloud (GCP), Oracle Cloud Infrastructure (OCI)</p>
@@ -160,17 +160,17 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
 
           {/* Professional Experience */}
           <div className="space-y-2.5">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-white/10 pb-1">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-orange-400 border-b border-white/10 pb-1">
               PROFESSIONAL EXPERIENCE (INTERNSHIP TRAINING)
             </h2>
             {EXPERIENCES_DATA.map((exp) => (
               <div key={exp.id} className="space-y-1">
                 <div className="flex flex-wrap items-center justify-between text-xs font-semibold text-white">
                   <span>{exp.title} | {exp.company}</span>
-                  <span className="font-mono text-slate-400">{exp.period}</span>
+                  <span className="font-mono text-white/50">{exp.period}</span>
                 </div>
-                <p className="text-[11px] font-mono text-purple-300 italic">{exp.type}</p>
-                <ul className="list-disc list-inside space-y-0.5 text-xs text-slate-300">
+                <p className="text-[11px] font-mono text-orange-400 italic">{exp.type}</p>
+                <ul className="list-disc list-inside space-y-0.5 text-xs text-white/70">
                   {exp.description.map((d, i) => (
                     <li key={i}>{d}</li>
                   ))}
@@ -181,22 +181,22 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
 
           {/* Key Projects */}
           <div className="space-y-2.5">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-white/10 pb-1">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-orange-400 border-b border-white/10 pb-1">
               KEY PROJECTS
             </h2>
             {PROJECTS_DATA.map((p) => (
               <div key={p.id} className="space-y-1">
                 <div className="flex flex-wrap items-center justify-between text-xs font-semibold text-white">
                   <span>{p.title}</span>
-                  <span className="font-mono text-amber-300 text-[11px]">({p.status})</span>
+                  <span className="font-mono text-orange-400 text-[11px]">({p.status})</span>
                 </div>
-                <p className="text-[11px] text-cyan-300 font-mono">
+                <p className="text-[11px] text-white/80 font-mono">
                   Technologies: {p.technologies.join(' | ')}
                 </p>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-white/70 leading-relaxed">
                   {p.solution}
                 </p>
-                <ul className="list-disc list-inside space-y-0.5 text-xs text-slate-300">
+                <ul className="list-disc list-inside space-y-0.5 text-xs text-white/70">
                   {p.features.slice(0, 3).map((f, i) => (
                     <li key={i}>{f}</li>
                   ))}
@@ -207,7 +207,7 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
 
           {/* Education & Problem Solving */}
           <div className="space-y-2">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-white/10 pb-1">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-orange-400 border-b border-white/10 pb-1">
               EDUCATION & PROBLEM SOLVING
             </h2>
             {EDUCATION_DATA.map((edu, i) => (
@@ -215,23 +215,23 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
                 <div>
                   <span className="font-semibold text-white">{edu.degree}</span> — {edu.institution}
                 </div>
-                <span className="font-mono text-slate-400">{edu.period}</span>
+                <span className="font-mono text-white/50">{edu.period}</span>
               </div>
             ))}
-            <div className="text-xs text-purple-300 font-mono pt-1">
+            <div className="text-xs text-orange-400 font-mono pt-1">
               • Coding Profiles: SkillRack: 1300+ Problems Solved
             </div>
           </div>
 
           {/* Certifications */}
           <div className="space-y-1.5">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-white/10 pb-1">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-orange-400 border-b border-white/10 pb-1">
               CERTIFICATIONS
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-slate-300">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-white/70">
               {CERTIFICATIONS_DATA.map((c) => (
                 <div key={c.id} className="flex items-start gap-1">
-                  <span className="text-cyan-400">•</span>
+                  <span className="text-orange-400">•</span>
                   <span>
                     <strong className="text-white">{c.issuer}:</strong> {c.title} ({c.issueDate})
                   </span>
@@ -243,13 +243,13 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
         </div>
 
         {/* Modal Footer Note */}
-        <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400 shrink-0">
-          <span>Place actual PDF in <code className="text-cyan-300">public/resume.pdf</code> if desired.</span>
+        <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-white/50 shrink-0">
+          <span>Official CV of Peddi Reddy Leela Anirudh Reddy</span>
           <button
             onClick={handlePrint}
-            className="text-cyan-400 hover:underline flex items-center gap-1"
+            className="text-orange-400 hover:underline flex items-center gap-1 font-bold"
           >
-            <span>Print or Save to PDF</span>
+            <span>Print or Save to PDF ↗</span>
           </button>
         </div>
 
