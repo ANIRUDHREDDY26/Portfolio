@@ -1,13 +1,14 @@
 import React from 'react';
 import { Project } from '../types';
-import { X, ExternalLink, Github, CheckCircle, ShieldAlert, Cpu, Layers, Sparkles } from 'lucide-react';
+import { X, ExternalLink, Github, CheckCircle, ShieldAlert, Cpu, Layers, Sparkles, Play } from 'lucide-react';
 
 interface ProjectModalProps {
   project: Project | null;
   onClose: () => void;
+  onOpenLiveDemo?: (project: Project) => void;
 }
 
-export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onOpenLiveDemo }) => {
   if (!project) return null;
 
   return (
@@ -18,6 +19,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         <button
           onClick={onClose}
           className="absolute top-5 right-5 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors"
+          title="Close Dialog"
         >
           <X className="w-5 h-5" />
         </button>
@@ -111,28 +113,31 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         {/* Repository & Demo Action Bar */}
         <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-400 text-center sm:text-left">
-            Currently marked as <span className="text-amber-300 font-mono">Concept / In Progress</span>. Repositories will be linked upon project release.
+            Interactive live demo simulation with project login available.
           </p>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            <button
-              onClick={() => {
-                alert(`GitHub repository placeholder for "${project.title}". You can attach your GitHub repository URL in src/data/portfolioData.ts!`);
-              }}
+            <a
+              href="https://github.com/ANIRUDHREDDY26/Portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-white hover:bg-slate-700 border border-white/10 transition-colors"
             >
               <Github className="w-4 h-4" />
-              <span>GitHub (Preview)</span>
-            </button>
+              <span>Source Repository</span>
+            </a>
 
             <button
               onClick={() => {
-                alert(`Interactive live demo placeholder for "${project.title}". Set your hosted deployment URL in src/data/portfolioData.ts!`);
+                if (onOpenLiveDemo) {
+                  onClose();
+                  onOpenLiveDemo(project);
+                }
               }}
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-purple-600 to-cyan-500 text-white hover:opacity-90 transition-opacity"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-purple-600 via-sky-600 to-cyan-500 text-white hover:opacity-90 shadow-lg shadow-cyan-900/30 transition-all"
             >
-              <ExternalLink className="w-4 h-4" />
-              <span>Live Demo</span>
+              <Play className="w-4 h-4 fill-white" />
+              <span>Launch Live Demo</span>
             </button>
           </div>
         </div>
