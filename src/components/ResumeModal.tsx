@@ -86,22 +86,34 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
           </div>
 
           <div className="flex items-center gap-2">
+            <a
+              href="/resume.pdf"
+              download="PEDDIREDDY_LEELA_ANIRUDH_REDDY_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-orange text-xs py-1.5 px-3.5 flex items-center gap-1.5"
+              title="Download Original PDF Resume"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Download PDF</span>
+            </a>
+
             <button
               onClick={handlePrint}
               className="btn-pill-dark text-xs py-1.5 px-3"
               title="Print or Save as PDF"
             >
               <Printer className="w-3.5 h-3.5 text-orange-400" />
-              <span className="hidden sm:inline">Print / Save PDF</span>
+              <span className="hidden sm:inline">Print</span>
             </button>
 
             <button
               onClick={handleDownloadMarkdown}
-              className="btn-orange text-xs py-1.5 px-3"
-              title="Download Resume Document"
+              className="btn-pill-dark text-xs py-1.5 px-3"
+              title="Download Resume Markdown"
             >
-              <Download className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Download</span>
+              <FileText className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">MD</span>
             </button>
 
             <button
@@ -144,17 +156,19 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
             </p>
           </div>
 
-          {/* Main Technical Skills */}
+          {/* Technical Skills */}
           <div className="space-y-1.5">
             <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-orange-400 border-b border-white/10 pb-1">
-              MAIN TECHNICAL SKILLS
+              TECHNICAL SKILLS
             </h2>
             <div className="text-xs space-y-1 text-white/70">
-              <p><strong className="text-white">Programming:</strong> Python, Java, JavaScript</p>
-              <p><strong className="text-white">AI & Machine Learning:</strong> Generative AI & LLMs, Machine Learning, RAG & Vector Embeddings</p>
-              <p><strong className="text-white">Cloud Computing:</strong> Microsoft Azure, Google Cloud (GCP), Oracle Cloud Infrastructure (OCI)</p>
-              <p><strong className="text-white">Full-Stack & Databases:</strong> React.js, Spring Boot, MySQL, MongoDB Atlas (Vector Search)</p>
-              <p><strong className="text-white">Cybersecurity & IoT:</strong> Cybersecurity Fundamentals, Internet of Things (IoT)</p>
+              <p><strong className="text-white">Programming:</strong> Python, Java, HTML, CSS, JavaScript</p>
+              <p><strong className="text-white">AI/ML:</strong> Machine Learning Algorithms, NLP, LLM, Generative AI, AI Foundations</p>
+              <p><strong className="text-white">Cloud Computing:</strong> Microsoft Azure, Google Cloud, Oracle Cloud Infrastructure (OCI), Cloud Computing</p>
+              <p><strong className="text-white">Cybersecurity & IoT:</strong> Cybersecurity Fundamentals, Internet of Things (IoT), Computing Foundations</p>
+              <p><strong className="text-white">Databases:</strong> MySQL, MongoDB Atlas (Vector Search)</p>
+              <p><strong className="text-white">Tools:</strong> LangChain, N8N, Web Frameworks, Power BI</p>
+              <p><strong className="text-white">Concepts:</strong> RAG, Vector Embeddings, Prompt Engineering, Cloud Architecture, Web Development</p>
             </div>
           </div>
 
@@ -210,16 +224,22 @@ ${CERTIFICATIONS_DATA.map(c => `- ${c.issuer}: ${c.title} (${c.issueDate})`).joi
             <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-orange-400 border-b border-white/10 pb-1">
               EDUCATION & PROBLEM SOLVING
             </h2>
-            {EDUCATION_DATA.map((edu, i) => (
-              <div key={i} className="flex flex-wrap items-center justify-between text-xs">
+            <div className="space-y-1.5 text-xs">
+              <div className="flex flex-wrap items-center justify-between">
                 <div>
-                  <span className="font-semibold text-white">{edu.degree}</span> — {edu.institution}
+                  <span className="font-semibold text-white">B.Tech in Computer Science and Engineering</span> — R.M.D. Engineering College (Chennai)
                 </div>
-                <span className="font-mono text-white/50">{edu.period}</span>
+                <span className="font-mono text-orange-400 font-bold">2024 – 2028 | CGPA: 7.04</span>
               </div>
-            ))}
+              <div className="flex flex-wrap items-center justify-between">
+                <div>
+                  <span className="font-semibold text-white">HSC (Senior Secondary)</span> — Sanskriti jr college (Tirupati)
+                </div>
+                <span className="font-mono text-orange-400 font-bold">2024 | 87.2%</span>
+              </div>
+            </div>
             <div className="text-xs text-orange-400 font-mono pt-1">
-              • Coding Profiles: SkillRack: 1300+ Problems Solved
+              • Coding Profiles: SkillRack: 1300+ Solved
             </div>
           </div>
 

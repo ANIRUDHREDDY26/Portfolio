@@ -61,9 +61,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 </span>
               </a>
 
-              <button onClick={onOpenResume} className="btn-pill-dark">
+              <a
+                href="/resume.pdf"
+                download="PEDDIREDDY_LEELA_ANIRUDH_REDDY_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-pill-dark"
+                title="Download Official PDF Resume"
+              >
                 <Download className="w-4 h-4 text-orange-400" />
                 <span>Download Resume</span>
+              </a>
+
+              <button onClick={onOpenResume} className="btn-pill-dark" title="View Digital Resume">
+                <span>View CV</span>
               </button>
 
               <a href="#contact" className="btn-pill-dark">

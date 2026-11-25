@@ -1,23 +1,23 @@
 import { Project, SkillItem, ExperienceItem, CertificationItem, EducationItem } from '../types';
 
 export const PERSONAL_INFO = {
-  name: "PEDDI REDDY LEELA ANIRUDH REDDY",
+  name: "PEDDIREDDY LEELA ANIRUDH REDDY",
   firstName: "Anirudh",
   title: "Computer Science Engineering | AI & Full-Stack Developer",
   subTitle: "Pursuing B.Tech in Computer Science and Engineering (CSE)",
-  tagline: "Computer Science Engineering undergraduate passionate about building intelligent applications by combining Artificial Intelligence, Generative AI, Cloud Computing, Cybersecurity and modern full-stack technologies.",
+  tagline: "Computer Science Engineering undergraduate with a strong interest in Cloud Computing, DevOps, AI/ML, and Cloud Solutions Architecture.",
   email: "anirudhleela0@gmail.com",
   phone: "+91 8977720014",
-  location: "Chennai, Tamil Nadu, India - 601206",
+  location: "Chennai, TamilNadu, India-601206",
   github: "https://github.com/ANIRUDHREDDY26",
-  linkedin: "https://linkedin.com",
-  aboutText: "I am a Computer Science Engineering (CSE) undergraduate and aspiring AI & Full-Stack Developer interested in developing intelligent, scalable and user-friendly applications. My technical focus centers on Machine Learning, Generative AI, Cloud Computing, Cybersecurity, IoT and modern Web Development. I continuously strengthen my problem-solving, programming and system design skills through hands-on projects, certifications and real-world architectures.",
+  linkedin: "https://www.linkedin.com/in/peddireddy-leela-anirudh-reddy-11a511342",
+  aboutText: "Computer Science Engineering undergraduate with a strong interest in Cloud Computing, DevOps, AI/ML, and Cloud Solutions Architecture. Focused on building practical skills in cloud infrastructure, automation, AI-powered applications, and backend development. Passionate about designing scalable, reliable, and efficient technology solutions while continuously strengthening problem-solving, programming, and system design skills through hands-on projects and continuous learning.",
   typewriterRoles: [
     "Computer Science Engineer (CSE)",
+    "Cloud & DevOps Enthusiast",
     "AI & Full-Stack Developer",
-    "Generative AI Specialist",
-    "Cloud Computing Enthusiast",
-    "Cybersecurity Enthusiast"
+    "Cloud Solutions Architect",
+    "Cybersecurity Practitioner"
   ],
   stats: [
     { label: "Problems Solved", value: "1300+", subtitle: "SkillRack" },
@@ -30,28 +30,28 @@ export const PERSONAL_INFO = {
 export const PROFILE_HIGHLIGHTS = [
   {
     title: "AI & Machine Learning",
-    description: "Developing intelligent systems leveraging modern ML algorithms, LLM concepts, RAG architectures, prompt engineering, and vector search embeddings.",
+    description: "Developing intelligent systems leveraging machine learning algorithms, NLP, LLMs, Generative AI, RAG architectures, prompt engineering, and vector search embeddings.",
     iconName: "BrainCircuit",
     gradient: "from-purple-500/20 to-indigo-500/10",
     borderGlow: "group-hover:border-purple-500/50"
   },
   {
-    title: "Cloud Technologies",
-    description: "Architecting cloud-native solutions across Microsoft Azure, Google Cloud, and Oracle Cloud Infrastructure (OCI) with a focus on automation and scalability.",
+    title: "Cloud Computing & DevOps",
+    description: "Architecting cloud-native solutions across Microsoft Azure, Google Cloud, and Oracle Cloud Infrastructure (OCI) with a focus on automation, reliability, and scalability.",
     iconName: "Cloud",
     gradient: "from-blue-500/20 to-cyan-500/10",
     borderGlow: "group-hover:border-cyan-500/50"
   },
   {
-    title: "Cybersecurity",
-    description: "Implementing cybersecurity fundamentals, anomaly detection, threat analysis, access control principles, and defense-in-depth system protection.",
+    title: "Cybersecurity & IoT",
+    description: "Implementing cybersecurity fundamentals, anomaly detection, threat analysis, access control principles, and defense-in-depth system protection alongside IoT sensor telemetry.",
     iconName: "ShieldCheck",
     gradient: "from-emerald-500/20 to-teal-500/10",
     borderGlow: "group-hover:border-emerald-500/50"
   },
   {
     title: "Full-Stack Development",
-    description: "Engineering robust, reactive frontend interfaces with modern React.js and reliable backend REST APIs using Java, Spring Boot, and modern databases.",
+    description: "Engineering robust, reactive frontend interfaces with React.js and reliable backend REST APIs using Java, Spring Boot, modern databases, and workflow automation.",
     iconName: "Layers",
     gradient: "from-fuchsia-500/20 to-pink-500/10",
     borderGlow: "group-hover:border-fuchsia-500/50"
@@ -59,30 +59,41 @@ export const PROFILE_HIGHLIGHTS = [
 ];
 
 export const SKILLS_DATA: SkillItem[] = [
-  // Programming (Core)
+  // Programming
   { name: "Python", category: "Programming", highlight: true },
   { name: "Java", category: "Programming", highlight: true },
+  { name: "HTML & CSS", category: "Programming", highlight: true },
   { name: "JavaScript", category: "Programming", highlight: true },
 
-  // AI & Machine Learning (Core)
-  { name: "Generative AI & LLMs", category: "AI & Machine Learning", highlight: true },
-  { name: "Machine Learning", category: "AI & Machine Learning", highlight: true },
+  // AI & Machine Learning
+  { name: "Machine Learning Algorithms", category: "AI & Machine Learning", highlight: true },
+  { name: "NLP & LLM", category: "AI & Machine Learning", highlight: true },
+  { name: "Generative AI", category: "AI & Machine Learning", highlight: true },
+  { name: "AI Foundations", category: "AI & Machine Learning", highlight: true },
   { name: "RAG & Vector Embeddings", category: "AI & Machine Learning", highlight: true },
+  { name: "Prompt Engineering", category: "AI & Machine Learning", highlight: true },
 
-  // Cloud Computing (Core)
+  // Cloud Computing
   { name: "Microsoft Azure", category: "Cloud Computing", highlight: true },
-  { name: "Google Cloud (GCP)", category: "Cloud Computing", highlight: true },
+  { name: "Google Cloud", category: "Cloud Computing", highlight: true },
   { name: "Oracle Cloud Infrastructure (OCI)", category: "Cloud Computing", highlight: true },
+  { name: "Cloud Architecture", category: "Cloud Computing", highlight: true },
 
-  // Full-Stack & Databases (Core)
-  { name: "React.js", category: "Tools & Frameworks", highlight: true },
-  { name: "Spring Boot", category: "Tools & Frameworks", highlight: true },
+  // Cybersecurity & IoT
+  { name: "Cybersecurity Fundamentals", category: "Cybersecurity & IoT", highlight: true },
+  { name: "Internet of Things (IoT)", category: "Cybersecurity & IoT", highlight: true },
+  { name: "Computing Foundations", category: "Cybersecurity & IoT", highlight: true },
+
+  // Databases
   { name: "MySQL", category: "Databases", highlight: true },
   { name: "MongoDB Atlas (Vector Search)", category: "Databases", highlight: true },
 
-  // Cybersecurity & IoT (Core)
-  { name: "Cybersecurity Fundamentals", category: "Cybersecurity & IoT", highlight: true },
-  { name: "Internet of Things (IoT)", category: "Cybersecurity & IoT", highlight: true }
+  // Tools & Frameworks
+  { name: "LangChain", category: "Tools & Frameworks", highlight: true },
+  { name: "N8N", category: "Tools & Frameworks", highlight: true },
+  { name: "React.js", category: "Tools & Frameworks", highlight: true },
+  { name: "Spring Boot", category: "Tools & Frameworks", highlight: true },
+  { name: "Power BI", category: "Tools & Frameworks", highlight: true }
 ];
 
 export const PROJECTS_DATA: Project[] = [
@@ -92,8 +103,8 @@ export const PROJECTS_DATA: Project[] = [
     status: "In Progress",
     category: "AI & Cybersecurity",
     problemStatement: "Modern enterprise cloud environments face high-velocity telemetry data and sophisticated cyber threats that conventional static firewalls fail to detect in real-time, resulting in delayed incident responses.",
-    solution: "Designed an AI-based security monitoring system that continuously evaluates cloud event streams, detects anomalous patterns and malicious signatures using machine learning, and dispatches automated containment alerts.",
-    technologies: ["Python", "Machine Learning", "Cybersecurity", "Cloud Computing", "AI Foundations"],
+    solution: "Designed an AI-based security monitoring system to identify suspicious activities, analyze security events, and detect potential cyber threats. Integrated machine learning concepts and cloud-based monitoring to support automated threat analysis and security alerts.",
+    technologies: ["AI Foundations", "Cybersecurity", "Python", "Cloud Computing", "Machine Learning"],
     features: [
       "Suspicious activity monitoring across multi-source security events",
       "Automated threat analysis and severity classification",
@@ -115,8 +126,8 @@ export const PROJECTS_DATA: Project[] = [
     status: "In Progress",
     category: "IoT & Cloud",
     problemStatement: "Industrial and urban microclimates lack localized, real-time environmental hazard monitoring, leading to delayed warnings for air pollution, thermal anomalies, and hazardous emissions.",
-    solution: "Developed an end-to-end IoT monitoring solution that captures sensory readings, transmits telemetry to Google Cloud data infrastructure, and provides actionable visual analytics for environmental parameters.",
-    technologies: ["Internet of Things", "Python", "Google Cloud", "Data Analytics", "Cloud Computing"],
+    solution: "Designed an IoT-based monitoring solution to collect and analyze real-time environmental data using connected sensors. Developed a cloud-integrated monitoring architecture for data storage, visualization, and intelligent analysis of sensor readings.",
+    technologies: ["Internet of Things", "Google Cloud", "Python", "Cloud Computing", "Data Analytics"],
     features: [
       "Connected sensor data monitoring (Temperature, Humidity, Air Quality)",
       "Real-time environmental readings processing with telemetry streams",
@@ -134,11 +145,11 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: "cloud-fullstack-application",
-    title: "Cloud-Based Full-Stack Application",
+    title: "Cloud-Based Full-Stack Application & Deployment System",
     status: "In Progress",
     category: "Full-Stack & Cloud",
     problemStatement: "Modern applications demand clean separation of concerns, secure identity verification, and dependable containerized cloud deployment to guarantee high availability and scale.",
-    solution: "Engineered a scalable full-stack web application with a responsive React.js frontend, an enterprise Spring Boot REST API layer, and secure Microsoft Azure deployment architecture.",
+    solution: "Developed a full-stack web application using Java, JavaScript, and modern web technologies with cloud-based deployment architecture. Explored cloud infrastructure, application hosting, database integration, and scalable application deployment using Microsoft Azure concepts.",
     technologies: ["Java", "JavaScript", "React.js", "Spring Boot", "Microsoft Azure", "REST APIs"],
     features: [
       "Robust user authentication and session management",
@@ -159,41 +170,39 @@ export const PROJECTS_DATA: Project[] = [
 
 export const EXPERIENCES_DATA: ExperienceItem[] = [
   {
-    id: "corizo-cyber-security",
-    title: "Cyber Security Intern",
-    company: "Corizo",
-    type: "Internship Training",
-    period: "June 2026 – July 2026",
-    badgeColor: "emerald",
-    description: [
-      "Successfully completed Cyber Security internship training, gaining foundational knowledge of cybersecurity concepts and practices.",
-      "Enhanced understanding of cybersecurity principles, security awareness, and approaches to protecting digital environments.",
-      "Explored proactive threat identification, vulnerability recognition, and fundamentals of network and host protection."
-    ],
-    skills: ["Cybersecurity Fundamentals", "Threat Analysis", "Security Awareness", "Digital Protection", "Network Security"],
-    certificateFileName: "corizo-cyber-security-internship.png"
-  },
-  {
     id: "corizo-cloud-computing",
     title: "Cloud Computing Intern",
     company: "Corizo",
     type: "Internship Training",
-    period: "January 2026 – February 2026",
+    period: "Jan 2026 – Feb 2026",
     badgeColor: "cyan",
     description: [
       "Successfully completed internship training in Cloud Computing, gaining knowledge of cloud computing concepts, technologies, and infrastructure.",
-      "Developed foundational understanding of cloud-based solutions, computing environments, and virtualization principles.",
-      "Studied cloud service models (IaaS, PaaS, SaaS) and architectural best practices for modern cloud applications."
+      "Developed foundational understanding of cloud-based solutions and computing environments."
     ],
     skills: ["Cloud Computing", "Cloud Infrastructure", "Cloud-based Solutions", "Virtualization", "Computing Environments"],
     certificateFileName: "corizo-cloud-computing-internship.png"
+  },
+  {
+    id: "corizo-cyber-security",
+    title: "Cyber Security Intern",
+    company: "Corizo",
+    type: "Internship Training",
+    period: "Jun 2026 – Jul 2026",
+    badgeColor: "emerald",
+    description: [
+      "Successfully completed Cyber Security internship training, gaining foundational knowledge of cybersecurity concepts and practices.",
+      "Enhanced understanding of cybersecurity principles, security awareness, and approaches to protecting digital environments."
+    ],
+    skills: ["Cybersecurity Fundamentals", "Threat Analysis", "Security Awareness", "Digital Protection", "Network Security"],
+    certificateFileName: "corizo-cyber-security-internship.png"
   }
 ];
 
 export const CERTIFICATIONS_DATA: CertificationItem[] = [
   {
     id: "oracle-oci-ai-2025",
-    title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+    title: "Oracle: OCI 2025 Certified AI Foundations Associate",
     issuer: "Oracle",
     issueDate: "October 2025",
     badge: "Official Certification",
@@ -203,7 +212,7 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
   },
   {
     id: "gcp-computing-foundations",
-    title: "Google Cloud Career Launchpad – Computing Foundations Track",
+    title: "Google Cloud: Google Cloud Career Launchpad – Computing Foundations Track",
     issuer: "Google Cloud",
     issueDate: "June 2026",
     badge: "Career Launchpad",
@@ -213,7 +222,7 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
   },
   {
     id: "nptel-iot",
-    title: "Introduction to Internet of Things – Elite (81%)",
+    title: "NPTEL: Introduction to Internet of Things (Elite – 81%)",
     issuer: "NPTEL",
     issueDate: "April 2026",
     badge: "Elite Grade (81%)",
@@ -223,7 +232,7 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
   },
   {
     id: "nptel-java",
-    title: "Programming in Java",
+    title: "NPTEL: Programming in Java",
     issuer: "NPTEL",
     issueDate: "October 2025",
     badge: "Academic Certification",
@@ -233,7 +242,7 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
   },
   {
     id: "nptel-soft-skills",
-    title: "Soft Skill Development",
+    title: "NPTEL: Soft Skill Development",
     issuer: "NPTEL",
     issueDate: "March 2025",
     badge: "Professional Skills",
@@ -243,7 +252,7 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
   },
   {
     id: "infosys-cloud-computing",
-    title: "Cloud Computing",
+    title: "Infosys Springboard: Cloud Computing",
     issuer: "Infosys Springboard",
     issueDate: "March 2026",
     badge: "Industry Certified",
@@ -253,7 +262,7 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
   },
   {
     id: "infosys-azure-architecture",
-    title: "Architecting Cloud Computing Solutions on Microsoft Azure",
+    title: "Infosys Springboard: Architecting Cloud Computing Solutions on Microsoft Azure",
     issuer: "Infosys Springboard",
     issueDate: "March 2026",
     badge: "Specialized Track",
@@ -263,7 +272,7 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
   },
   {
     id: "infosys-javascript-modern",
-    title: "JavaScript Essentials for Modern Web Development",
+    title: "Infosys Springboard: JavaScript Essentials for Modern Web Development",
     issuer: "Infosys Springboard",
     issueDate: "March 2026",
     badge: "Web Track",
@@ -273,7 +282,7 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
   },
   {
     id: "infosys-web-dev-concepts",
-    title: "Web Development Concepts",
+    title: "Infosys Springboard: Web Development Concepts",
     issuer: "Infosys Springboard",
     issueDate: "February 2026",
     badge: "Web Track",
@@ -283,12 +292,12 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
   },
   {
     id: "intermediate-12th-board",
-    title: "Intermediate Pass Certificate cum Memorandum of Marks (12th)",
+    title: "HSC (Senior Secondary) — Sanskriti jr college (Tirupati)",
     issuer: "Board of Intermediate Education, AP",
     issueDate: "March 2024",
-    badge: "'A' Grade (872/1000)",
+    badge: "87.2%",
     category: "Academic",
-    description: "Completed Senior Secondary Intermediate Education from Sanskriti Junior College, Tirupati with Mathematics, Physics, and Chemistry (MPC) in 'A' Grade.",
+    description: "Completed Senior Secondary Intermediate Education from Sanskriti Junior College, Tirupati with 87.2% marks.",
     certificateFileName: "intermediate-12th-certificate.jpg"
   },
   {
@@ -296,24 +305,14 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
     title: "Secondary School Certificate (SSC / 10th Standard)",
     issuer: "Board of Secondary Education, AP",
     issueDate: "April 2022",
-    badge: "First Division (481/600)",
+    badge: "First Division (481 Marks)",
     category: "Academic",
     description: "Completed Secondary School Examination from Gautam Talent (E.M.) High School, Balaji Colony, Tirupati in First Division with English medium of instruction.",
     certificateFileName: "ssc-10th-certificate.jpg"
   },
   {
-    id: "corizo-cyber-training",
-    title: "Cyber Security Internship Training",
-    issuer: "Corizo",
-    issueDate: "July 2026",
-    badge: "Training Completion",
-    category: "Cybersecurity",
-    description: "Completed comprehensive training modules in digital security defenses, network threat recognition, security postures, and incident response awareness.",
-    certificateFileName: "corizo-cyber-security-internship.png"
-  },
-  {
     id: "corizo-cloud-training",
-    title: "Cloud Computing Internship Training",
+    title: "Corizo: Cloud Computing Internship Training",
     issuer: "Corizo",
     issueDate: "February 2026",
     badge: "Training Completion",
@@ -322,8 +321,18 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
     certificateFileName: "corizo-cloud-computing-internship.png"
   },
   {
+    id: "corizo-cyber-training",
+    title: "Corizo: Cyber Security Internship Training",
+    issuer: "Corizo",
+    issueDate: "July 2026",
+    badge: "Training Completion",
+    category: "Cybersecurity",
+    description: "Completed comprehensive training modules in digital security defenses, network threat recognition, security postures, and incident response awareness.",
+    certificateFileName: "corizo-cyber-security-internship.png"
+  },
+  {
     id: "codetantra-software-dev",
-    title: "Software Development Practices",
+    title: "CodeTantra: Software Development Practices",
     issuer: "CodeTantra",
     issueDate: "February 2026",
     badge: "Engineering Track",
@@ -335,37 +344,37 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
 
 export const EDUCATION_DATA: EducationItem[] = [
   {
-    degree: "Bachelor of Technology (B.Tech) in Computer Science and Engineering (CSE)",
-    institution: "R.M.D. Engineering College",
+    degree: "B.Tech in Computer Science and Engineering",
+    institution: "R.M.D. Engineering College (Chennai)",
     location: "Chennai, Tamil Nadu, India",
     period: "2024 – 2028",
-    status: "Currently Pursuing (CSE)",
+    status: "CGPA: 7.04",
     details: [
-      "Rigorous undergraduate coursework in Computer Science and Engineering, Data Structures & Algorithms, Operating Systems, Database Management Systems, and Cloud Computing.",
-      "Specialized academic focus on Artificial Intelligence, Machine Learning systems, and distributed cloud applications.",
+      "Rigorous undergraduate engineering program in Computer Science and Engineering with an academic CGPA of 7.04.",
+      "Focused on Cloud Computing, DevOps, AI/ML, Data Structures & Algorithms, Operating Systems, and Database Management Systems.",
       "Demonstrated programming craftsmanship with 1300+ coding challenges solved on SkillRack."
     ]
   },
   {
-    degree: "Intermediate / Higher Secondary Certificate (12th / HSC)",
-    institution: "Sanskriti Junior College",
+    degree: "HSC (Senior Secondary)",
+    institution: "Sanskriti jr college (Tirupati)",
     location: "Tirupati, Andhra Pradesh, India",
-    period: "2022 – 2024",
-    status: "Completed (Grade 'A' - 872/1000)",
+    period: "2024",
+    status: "87.2%",
     details: [
       "Mathematics, Physics, and Chemistry (MPC) stream.",
-      "Passed with 'A' Grade (872 / 1000) under Board of Intermediate Education, Andhra Pradesh.",
+      "Passed with 87.2% under Board of Intermediate Education, Andhra Pradesh.",
       "Built a solid foundation in analytical thinking, calculus, physics, and computational reasoning."
     ],
     certificateFileName: "intermediate-12th-certificate.jpg",
-    certificateTitle: "Intermediate Pass Certificate"
+    certificateTitle: "HSC Senior Secondary Certificate"
   },
   {
     degree: "Secondary School Certificate (SSC / 10th Standard)",
     institution: "Gautam Talent (E.M.) High School",
     location: "Balaji Colony, Tirupati, Andhra Pradesh",
     period: "2021 – 2022",
-    status: "Passed in First Division (481 Marks)",
+    status: "First Division (481 Marks)",
     details: [
       "Board of Secondary Education, Andhra Pradesh.",
       "Secured First Division with 481 marks with English as medium of instruction.",
