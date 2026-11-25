@@ -64,10 +64,10 @@ export const Footer: React.FC = () => {
                 CONNECT
               </p>
               <ul className="space-y-2 list-none p-0 m-0 font-mono text-xs">
-                <li><a href="mailto:anirudhreddy2601@gmail.com" className="text-white/70 hover:text-orange-400 transition-colors">Email</a></li>
+                <li><a href="mailto:anirudhleela0@gmail.com" className="text-white/70 hover:text-orange-400 transition-colors">Email</a></li>
                 <li><a href="https://www.linkedin.com/in/peddireddy-leela-anirudh-reddy-11a511342" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-orange-400 transition-colors">LinkedIn</a></li>
                 <li><a href="https://github.com/ANIRUDHREDDY26" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-orange-400 transition-colors">GitHub</a></li>
-                <li><a href="tel:+919182348773" className="text-white/70 hover:text-orange-400 transition-colors">+91 91823 48773</a></li>
+                <li><a href="tel:+918977720014" className="text-white/70 hover:text-orange-400 transition-colors">+91 8977720014</a></li>
               </ul>
             </div>
 

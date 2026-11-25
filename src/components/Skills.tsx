@@ -56,7 +56,7 @@ export const Skills: React.FC = () => {
                 </a>
 
                 <a
-                  href="mailto:anirudhreddy2601@gmail.com"
+                  href="mailto:anirudhleela0@gmail.com"
                   className="w-11 h-11 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 border border-white/10 transition-colors"
                   title="Email"
                 >

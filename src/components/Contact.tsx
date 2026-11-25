@@ -21,7 +21,7 @@ export const Contact: React.FC = () => {
   };
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('anirudhreddy2601@gmail.com');
+    navigator.clipboard.writeText('anirudhleela0@gmail.com');
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
   };
@@ -168,15 +168,15 @@ export const Contact: React.FC = () => {
                 className="btn-orange text-sm py-3 px-6"
               >
                 {copiedEmail ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                <span>{copiedEmail ? 'Email Copied!' : 'anirudhreddy2601@gmail.com'}</span>
+                <span>{copiedEmail ? 'Email Copied!' : 'anirudhleela0@gmail.com'}</span>
               </button>
 
               <a
-                href="tel:+919182348773"
+                href="tel:+918977720014"
                 className="btn-pill-dark text-sm py-3 px-6"
               >
                 <Phone className="w-4 h-4 text-orange-400" />
-                <span>+91 91823 48773</span>
+                <span>+91 8977720014</span>
               </a>
 
               <a
